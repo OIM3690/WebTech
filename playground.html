@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Playground Page</title>
     <style>
+      body {
+        /* margin:0; */
+      }
       h1 {
         text-align: center;
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -20,34 +23,68 @@
 
       img {
         border: 5px red solid;
-        padding: 10px;
-        margin-left: 20px;
-        margin-right: 30px;
+        /* padding: 5px;
+        margin-left: 5px;
+        margin-right: 5px; */
         /* border-width: 5px;
           border-color: red;
           border-style: solid; */
+        /* float: right; */
+        position: fixed;
+        /* left:50%;
+        top:50%; */
+        /* offset */
+        /* flexbox */
+        right: 0;
+        bottom: 0;
+      }
+      p {
+        color: navy;
+        /* text-decoration: underline; */
+      }
+      #red-p {
+        color: fuchsia;
+        border-style: solid;
+      }
+      h1.bordered {
+        border-color: red;
+      }
+      .bordered {
+        border: black 5px dotted;
+      }
+      .underline {
+        text-decoration: underline;
+      }
+      .larger {
+        font-size: xx-large;
+      }
+      a:hover{
+          background-color: yellow;
+          text-decoration: none;
+      }
+      a:visited{
+          color: red;
       }
     </style>
   </head>
   <body>
     <a id="top" href=""></a>
-    <h1>Welcome to Playground Page</h1>
-    <p><a href="#part2">go to part 2</a></p>
-    <p>
-      <a href="https://www.nba.com"
-        ><img src="images/Messi.jpg" alt="" height="100"
-      /></a>
-    </p>
-    <p>
+    <h1 class="bordered underline">Welcome to Playground Page</h1>
+    <p><a href="#part2">Go to part 2</a></p>
+
+    <!-- <p>
       <img src="images/tiger1.jpg" alt="" height="100" />
       <img src="images/Messi.jpg" alt="" height="100" />
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus officia
-      molestiae nulla, quibusdam esse dolore ut ipsum excepturi perspiciatis
-      mollitia ipsam ullam est hic provident dignissimos sed perferendis neque
-      corrupti iste porro odit similique, harum impedit! Doloribus voluptates
-      amet sapiente necessitatibus labore at ad dolore! Esse facilis facere
+    </p> -->
+    <p class="underline">
+      <span class="larger">L</span>orem ipsum dolor sit amet consectetur
+      adipisicing elit. Delectus officia molestiae nulla, quibusdam esse dolore
+      ut ipsum excepturi perspiciatis mollitia ipsam ullam est hic provident
+      dignissimos sed perferendis neque corrupti iste porro odit similique,
+      harum impedit! Doloribus voluptates amet sapiente necessitatibus labore at
+      ad dolore! Esse facilis facere<a href="https://www.nba.com"
+        ><img src="images/Messi.jpg" alt="" height="100"
+      /></a>
       officiis blanditiis, aspernatur, modi, ullam temporibus excepturi odio
       laudantium necessitatibus adipisci provident! Expedita quisquam non
       excepturi corporis, atque libero inventore nam! Repellat sunt sit
@@ -56,21 +93,21 @@
       molestiae accusamus nam, aliquam natus vero cum a qui voluptas
       consequuntur eligendi!
     </p>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus officia
-      molestiae nulla, quibusdam esse dolore ut ipsum excepturi perspiciatis
-      mollitia ipsam ullam est hic provident dignissimos sed perferendis neque
-      corrupti iste porro odit similique, harum impedit! Doloribus voluptates
-      amet sapiente necessitatibus labore at ad dolore! Esse facilis facere
-      officiis blanditiis, aspernatur, modi, ullam temporibus excepturi odio
-      laudantium necessitatibus adipisci provident! Expedita quisquam non
-      excepturi corporis, atque libero inventore nam! Repellat sunt sit
-      corrupti. Alias magni voluptatibus commodi ad dolor? Explicabo
-      perspiciatis suscipit consequatur fugit maiores sapiente provident quo
-      molestiae accusamus nam, aliquam natus vero cum a qui voluptas
-      consequuntur eligendi!
+    <p id="red-p" class="bordered">
+      <span class="larger">L</span>orem ipsum dolor sit amet consectetur
+      adipisicing elit. Delectus officia molestiae nulla, quibusdam esse dolore
+      ut ipsum excepturi perspiciatis mollitia ipsam ullam est hic provident
+      dignissimos sed perferendis neque corrupti iste porro odit similique,
+      harum impedit! Doloribus voluptates amet sapiente necessitatibus labore at
+      ad dolore! Esse facilis facere officiis blanditiis, aspernatur, modi,
+      ullam temporibus excepturi odio laudantium necessitatibus adipisci
+      provident! Expedita quisquam non excepturi corporis, atque libero
+      inventore nam! Repellat sunt sit corrupti. Alias magni voluptatibus
+      commodi ad dolor? Explicabo perspiciatis suscipit consequatur fugit
+      maiores sapiente provident quo molestiae accusamus nam, aliquam natus vero
+      cum a qui voluptas consequuntur eligendi!
     </p>
-    <p>
+    <p class="bordered">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus officia
       molestiae nulla, quibusdam esse dolore ut ipsum excepturi perspiciatis
       mollitia ipsam ullam est hic provident dignissimos sed perferendis neque
