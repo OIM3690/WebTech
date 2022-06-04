@@ -1,0 +1,31 @@
+body {
+  background-color: #ccffff;
+}
+h1 {
+  font-size: 36pt;
+  text-align: center;
+}
+h2 {
+  font-family: verdana;
+  font-size: 24pt;
+  color: #6699ff;
+}
+p {
+  font-size: 12pt;
+  color: black;
+  margin: 12px 20px 12px 20px;
+}
+p.bord {
+  border-style: ridge;
+  border-width: medium;
+  border-color: white;
+  text-align: center;
+  margin: 6px 25px 6px 26px;
+}
+hr {
+  width: 70%;
+  border-top: fuchsia 6px solid;
+}
+/* p::first-letter{
+  font-size: xx-large;
+} */

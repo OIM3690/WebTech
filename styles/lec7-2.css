@@ -1,0 +1,17 @@
+body {
+  background-image: url(../images/babson-logo.png);
+  background-repeat: repeat;
+}
+h1 {
+  font-size: 64pt;
+  color: red;
+  font-stretch: wider;
+}
+h2 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20pt;
+  margin-left: 50px;
+}
+p {
+  text-align: center;
+}
