@@ -1,0 +1,28 @@
+h1 {
+  text-align: center;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 36pt;
+  color: silver;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 24pt;
+  color: #b08040;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+p {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 12pt;
+  border: red solid 3px;
+  margin: 40px;
+  padding: 40px 10px 10px 10px;
+  width: 50%;
+}
+
+#one{
+    
+}

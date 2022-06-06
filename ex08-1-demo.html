@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 08-1</title>
+    <style>
+      table,
+      td,
+      th {
+        border: 1px black solid;
+      }
+      table {
+        border-collapse: collapse;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+      }
+      td {
+        text-align: center;
+      }
+      /* #top{
+        background-color: greenyellow;
+      } */
+      th {
+        background-color: greenyellow;
+      }
+
+      tr:nth-child(even) {
+        background-color: gray;
+      }
+      tr:nth-child(odd) {
+        background-color: yellow;
+      }
+      /* .second{
+        text-align: left;
+      } */
+
+      td:nth-child(2){
+        text-align: left;
+      }
+
+      caption{
+        font-size: 30px;
+        font-weight: bold;
+      }
+
+      tr:hover{
+        background-color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <table>
+      <caption>
+        Generations of iPhones
+      </caption>
+      <tr id="top">
+        <th>Product Code</th>
+        <th>Product Description</th>
+        <th>Price</th>
+      </tr>
+      <tr>
+        <td>iPhone 4</td>
+        <td class="second">This changes everything, again!</td>
+        <td>$0</td>
+      </tr>
+      <tr>
+        <td>iPhone 5</td>
+        <td class="second">Loving it is easy. That's why so many people do.</td>
+        <td>$29</td>
+      </tr>
+      <tr>
+        <td>iPhone 5S</td>
+        <td class="second">You're more powerful than you think.</td>
+        <td>$49</td>
+      </tr>
+      <tr>
+        <td>iPhone 6</td>
+        <td class="second">Bigger than bigger</td>
+        <td>$99</td>
+      </tr>
+      <tr>
+        <td>iPhone 7</td>
+        <td class="second">This is 7</td>
+        <td>$199</td>
+      </tr>
+      <tr>
+        <td>iPhone 8</td>
+        <td class="second">A new generation of iPhone</td>
+        <td>$299</td>
+      </tr>
+      <tr>
+        <td>iPhone X</td>
+        <td class="second">Say hello to the future</td>
+        <td>$699</td>
+      </tr>
+      <tr>
+        <td>iPhone 11</td>
+        <td class="second">Just the right amount of everything.</td>
+        <td>$999</td>
+      </tr>
+      <tr>
+        <td>iPhone 11 Pro</td>
+        <td class="second">And then there was Pro.</td>
+        <td>$999</td>
+      </tr>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+table {
+    width: 500px;
+    margin-right: auto;
+    margin-left: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    /*opacity: 0.9;*/
+    box-shadow: 10px 10px 5px grey;
+    /*border-spacing: 0;*/
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+body {
+    background-image: url("../images/music.gif") ;
+}
+
+th,
+td {
+    border: 1px solid black;
+    padding: 3px;
+    vertical-align: top;
+    background-color: green;
+}
+
+img {
+    width: 100%;
+}
+
+td.pic {
+    width: 70%;
+    background-color: pink;
+    font-style: italic;
+    text-align: right;
+}
+
+td#last {
+    width: 30%;
+    background-color: lightblue;
+}
+
+td.thirtyfive {
+    width: 35%;
+    background-color: lightcoral;
+}
