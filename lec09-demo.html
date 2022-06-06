@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Demo</title>
+    <style>
+        form{
+            width: 70%;
+            background-color: lightgray;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+        }
+    </style>
+  </head>
+  <body>
+    <form method="POST" action="https://oim-apis.herokuapp.com/form">
+      <div>
+        <label for="username-id">Username:</label>
+        <input
+          type="text"
+          id="username-id"
+          name="username"
+          maxlength="100"
+          placeholder="Username"
+        />
+      </div>
+      <div>
+        <label for="ps">Password:</label
+        ><input type="password" name="password" id="ps" />
+      </div>
+      <div>
+        Gender:
+        <label
+          >Male
+          <input type="radio" name="gender" value="male" />
+        </label>
+        <label
+          >Female
+          <input type="radio" name="gender" value="female" />
+        </label>
+      </div>
+      <!-- <button type="submit">Send</button> -->
+      <input type="submit" value="Submit" />
+      <input type="reset" value="Reset" />
+    </form>
+  </body>
+</html>
