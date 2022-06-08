@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>In-Class Exercise 09</title>
+    <style>
+      h1 {
+        text-align: center;
+      }
+
+      form {
+        font-family: Arial, Helvetica, sans-serif;
+        color: navy;
+        background-color: lightgray;
+        padding: 10px 20px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+      }
+
+      form > div {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>In-Class Exercise 09 - HTML Form</h1>
+    <form action="https://oim-apis.herokuapp.com/form2" method="POST">
+      <div>
+        <label for="lastname">Last Name: </label>
+        <input
+          id="lastname"
+          maxlength="100"
+          name="lastname"
+          placeholder="Last name"
+          type="text"
+        />
+      </div>
+      <div>
+        <label for="firstname">First Name: </label>
+        <input
+          id="firstname"
+          maxlength="100"
+          name="firstname"
+          placeholder="First name"
+          type="text"
+        />
+      </div>
+      <div>
+        <label for="email">Email: </label>
+        <input
+          id="email"
+          maxlength="100"
+          name="email"
+          placeholder="Email address"
+          size="26"
+          type="email"
+        />
+      </div>
+      <div>
+        Gender:
+        <label>Male<input name="gender" type="radio" value="male" /></label>
+        <label>Female<input name="gender" type="radio" value="female" /></label>
+      </div>
+      <div>
+        <div>My favorite topics are:</div>
+        <div>
+          <input
+            id="basichtml"
+            name="topics"
+            type="checkbox"
+            value="smartphone"
+          />
+          <label for="basichtml">Basic HTML</label>
+        </div>
+        <div>
+          <input id="css" name="topics" type="checkbox" value="css" />
+          <label for="css">CSS</label>
+        </div>
+        <div>
+          <input id="tables" name="topics" type="checkbox" value="tables" />
+          <label for="tables">Tables</label>
+        </div>
+      </div>
+      <div>
+        <input name="submit" type="submit" value="Click me to submit" />
+        <input name="reset" type="reset" value="Clear form" />
+      </div>
+    </form>
+  </body>
+</html>
