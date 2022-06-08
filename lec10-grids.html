@@ -17,26 +17,21 @@
         /* grid-template-columns: 1fr 2fr 1fr;
         grid-template-rows: 100px 300px 100px; */
         grid-template-columns: 35% 35% 30%;
-        /* grid-template-rows: 100px 300px 100px 300px; */
-         /*height for each row*/
+        grid-template-rows: 100px 300px 100px 300px; /*height for each row*/
         grid-template-areas:
           "header header header"
           "img img side"
           "img-caption img-caption side"
           "main-1 main-2 side";
-
+        
         width: 90%;
         margin: 10px auto;
-        
       }
-      .item {
-        /* height: 150px; */
-        border: 3px solid black;
-        background-color: lightgray;
-        /* margin: 10px; */
-        display: grid;
-        justify-items: center;
-        align-items: center;
+      .item{
+          /* height: 150px; */
+          border: 3px solid black;
+          background-color: lightgray;
+          margin: 10px;
       }
       .item-1 {
         /* width: 200px; */
@@ -58,22 +53,23 @@
       .item-6 {
         grid-area: side;
       }
+      
     </style>
   </head>
   <body>
     <div class="container">
-      <div class="item item-1">Item 1</div>
-      <div class="item item-2"><img src="images/elephant.jpg" alt="" /></div>
-      <div class="item item-3">Item 3</div>
-      <div class="item item-4">
-        Item 4<br />Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-        Sunt a hic cumque consequatur amet pariatur, aliquam ullam quo
-        dignissimos sequi cum nulla vitae provident maxime labore reiciendis
-        voluptas eius accusantium.
-      </div>
-      <div class="item item-5">Item 5</div>
-      <div class="item item-6">Item 6</div>
-      <!-- <div class="item item-7">Item 7</div> -->
+        <div class="item item-1">Item 1</div>
+        <div class="item item-2"><img src="images/elephant.jpg" alt=""></div>
+        <div class="item item-3">Item 3</div>
+        <div class="item item-4">
+          Item 4<br />Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+          Sunt a hic cumque consequatur amet pariatur, aliquam ullam quo
+          dignissimos sequi cum nulla vitae provident maxime labore reiciendis
+          voluptas eius accusantium.
+        </div>
+        <div class="item item-5">Item 5</div>
+        <div class="item item-6">Item 6</div>
+        <!-- <div class="item item-7">Item 7</div> -->
     </div>
   </body>
 </html>

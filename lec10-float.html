@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Layout - Float</title>
+    <style>
+      body {
+        background-color: black;
+      }
+      .container {
+        background-color: yellow;
+        padding: 15px;
+        height: 300px;
+        width: 90%;
+        margin: 30px auto;
+        /* overflow: scroll; */
+      }
+
+      .item {
+        height: 150px;
+        border: 3px solid black;
+        background-color: lightgray;
+        margin: 10px;
+        width: 150px;
+        float:left;
+      }
+
+      .item-3{
+          height: 200px
+      }
+      .item-4{
+          width: 30px;
+          float: right;
+      }
+      /* 1. Horizontally align the three item boxes in a row */
+      /* How do we center align the boxes? */
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item item-1">Item 1</div>
+      <div class="item item-2">Item 2</div>
+      <div class="item item-3">Item 3</div>
+      <div class="item item-4">Item 4</div>
+    </div>
+  </body>
+</html>
