@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction to JavaScript - Demo</title>
+  </head>
+  <body>
+    <h1>Click Me ... I am Changing</h1>
+    <img id="img-mailbox" src="images/mailbox.png" alt="mailbox" width="30" />
+
+    <p>
+      <button>I dare you to click on me!</button>
+    </p>
+
+    <script>
+      // Questions
+      /*
+      1. limit of enlarging the image? - seems not.
+      2. `window.alert()` can show text only? 
+      3. What does `Math.random()` do? What is Math.floor()?
+      4. b.style.backgroundColor vs. background-color (in CSS)?
+         -  camelStyle/iPad style
+      5. What is `const`? - this is how we create a constant variable. `let` - create a non-constant variable
+      6. What is `myImg`? - variable name
+      7. What is querySelector()? 
+      8. Can we change ip address/domain to others in window.alert()? 
+         - TODO: check after class ✅
+         No.
+      9. w = w + 30;
+      10. JavaScript execusion sequence.
+      11. Different ways to handle events.
+
+        */
+      function changeBackgroundColor() {
+        const bgColors = ["green", "yellow", "blue", "pink", "red", "orange"];
+        const n = bgColors.length;
+        const randIndex = Math.floor(Math.random() * n);
+        // const b = document.getElementById("bodyA");
+        const b = document.querySelector("body");
+        b.style.backgroundColor = bgColors[randIndex];
+      }
+
+      //   document.querySelector("h1").onclick = changeBackgroundColor;
+      //    With anonymous function we can do multiple things like below
+      document.querySelector("h1").onclick = function () {
+        changeBackgroundColor();
+        enlargeImage();
+      };
+
+      function enlargeImage() {
+        // const myImg = document.getElementById("img-mailbox");
+        const myImg = document.querySelector("#img-mailbox");
+        let w = myImg.width;
+        w = w + 30;
+        myImg.width = w;
+      }
+
+      document.querySelector("img").addEventListener("mouseover", function () {
+        enlargeImage();
+      });
+
+      function c() {
+        window.alert("haha😀");
+      }
+
+      document.querySelector("button").onclick = function () {
+        c();
+      };
+    </script>
+  </body>
+</html>
