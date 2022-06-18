@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 13</title>
+  </head>
+  <body>
+    <h1>Manipulating Styles and Images</h1>
+    <div>
+      <img
+        src="images/tiger1.jpg"
+        alt="Tiger 1"
+        title="Tiger is walking"
+        width="400"
+        id="tiger1"
+      />
+    </div>
+    <script>
+      function enlargeImage() {
+        console.log("...starting...");
+        /* Pseudo-code:
+        1. get the element we want to manipulate 
+            - get the image, assign it to a variable ✅
+        2. Get the width/height of the selected element
+            - assign the value to another variable ✅
+        3. Change the value of the variable (from step 2)
+            - multiply it by 1.5 ✅
+        4. Assign the new value back to the width/height of the element.
+        */
+        const imgEl = document.getElementById("tiger1");
+        // console.log(imgEl.width);
+        let w = imgEl.width;
+        w = w * 1.1;
+        // console.log(w);
+        imgEl.width = w;
+        document.querySelector("h1").innerText = "Tiger!";
+      }
+      document.querySelector("#tiger1").onmouseover = function () {
+        enlargeImage();
+      };
+
+      document.getElementById("tiger1").onmouseout = function () {
+        // Another function
+      };
+    </script>
+  </body>
+</html>
