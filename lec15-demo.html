@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conditional Statement demo</title>
+  </head>
+  <body>
+    <button>Click me</button>
+    <p id="message"></p>
+    <img src="" alt="" />
+    <script>
+      function f() {
+        console.log(".... starting...");
+        // const a = 2022;
+        // const b = 622;
+        // const result = a + b;
+        // console.log("result =", result);
+        let age = window.prompt("How old are you?");
+        let country = window.prompt("Which country are you in now?");
+        // console.log(age);
+        const messageEl = document.getElementById("message");
+        const imageEl = document.querySelector("img");
+        if (age >= 21 || country == "China") {
+          messageEl.innerText = "Yes, you can!";
+          // add an image of Babson beaver below the message
+          imageEl.src = "images/beaver.jpg";
+        } else if (age >= 18) {
+          messageEl.innerText =
+            "Technically you cannot! But in reality, I know what you did.";
+          imageEl.src = "images/tiger1.jpg";
+        } else {
+          messageEl.innerText = "No, you cannot!";
+          // add an image of smiley face below the message
+          imageEl.src = "images/smiley.gif";
+        }
+      }
+      document.querySelector("button").onclick = function () {
+        f();
+      };
+    </script>
+  </body>
+</html>

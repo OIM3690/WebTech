@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Manipulating Styles and Images</h1>
+
+    <p>
+      <img
+        src="images/tiger1.jpg"
+        alt="Tiger 1"
+        title="Tiger is walking"
+        width="400"
+        id="tiger1"
+      />
+    </p>
+
+    <p>
+      <img
+        src="images/tiger2.jpg"
+        alt="Tiger 2"
+        title="Tiger is looking at you"
+        width="400"
+        id="tiger2"
+      />
+    </p>
+    <div>
+      <img
+        src="images/tiger3.jpg"
+        alt="Tiger 3"
+        title="Tiger is looking somewhere else "
+        width="400"
+        id="tiger3"
+      />
+    </div>
+
+    <script>
+      function enlarge(x) {
+        let i = document.getElementById(x);
+        let w = i.width;
+        w = w * 1.5;
+        i.width = w;
+      }
+
+      function shrink(x) {
+        let i = document.getElementById(x);
+        let w = i.width;
+        w = w / 1.5;
+        i.width = w;
+        document.querySelector("h1").innerHTML =
+          "Manipulating Styles and Images";
+      }
+
+      let images = document.querySelectorAll("img");
+      for (let index = 0; index < images.length; index++) {
+        const element = images[index];
+        element.addEventListener("mouseover", function () {
+          enlarge(this.id);
+        });
+        element.addEventListener("mouseout", function () {
+          shrink(this.id);
+        });
+      }
+    </script>
+  </body>
+</html>
