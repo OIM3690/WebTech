@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="demo">This is a demonstration.</p>
+    <form action="" id="my-form">
+      <div>x = <input type="text" name="x" id="x" /></div>
+      <div>y = <input type="text" name="y" id="y" /></div>
+      <div><button type="button">Click</button></div>
+    </form>
+    <script>
+      function f() {
+        // When user click the button, show the sum of x and y
+        console.log("...starting...");
+        // const myForm = document.getElementById("my-form");
+        // const x = myForm["x"].value;
+        const x = document.getElementById("x").value;
+        console.log(x);
+
+        document.getElementById("demo").innerHTML = x;
+      }
+      document.querySelector("button").onclick = function () {
+        f();
+      };
+    </script>
+  </body>
+</html>
