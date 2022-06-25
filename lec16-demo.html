@@ -16,6 +16,9 @@
     <form action="" id="my-form">
       <div>x = <input type="text" name="x" id="x" /></div>
       <div>y = <input type="text" name="y" id="y" /></div>
+      <div>
+        result = <input type="text" name="result" id="result" readonly />
+      </div>
       <div><button type="button">Click</button></div>
     </form>
     <script>
@@ -25,9 +28,21 @@
         // const myForm = document.getElementById("my-form");
         // const x = myForm["x"].value;
         const x = document.getElementById("x").value;
-        console.log(x);
+        const y = document.getElementById("y").value;
+        const result = document.getElementById("demo");
+        console.log(x, typeof x);
 
-        document.getElementById("demo").innerHTML = x;
+        // document.getElementById("demo").innerHTML = parseFloat(x) + parseFloat(y);
+        document.getElementById("result").value = parseFloat(x) + parseFloat(y);
+
+        // Prompt user to enter the result, if the result is correct, show some encouraging message; otherwise, show a humiliating message
+
+        // const userResult = window.prompt("What is x + y?");
+        // if (userResult == parseFloat(x) + parseFloat(y)) {
+        //   result.innerHTML = "That is correct!";
+        // } else {
+        //   result.innerHTML = "You better study math again!";
+        // }
       }
       document.querySelector("button").onclick = function () {
         f();
