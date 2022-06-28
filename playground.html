@@ -81,22 +81,24 @@
       /* *{
           border: 10px solid purple;
       } */
-      h1:hover{
-          border:none;
+      h1:hover {
+        border: none;
       }
-      p span.larger{
-          color: red;
+      p span.larger {
+        color: red;
       }
     </style>
   </head>
   <body>
     <a id="top" href=""></a>
-    <h1 class="bordered underline">We<span class="larger">L</span>come to Playground Page</h1>
+    <h1 class="bordered underline">
+      We<span class="larger">L</span>come to Playground Page
+    </h1>
     <div class="square"></div>
     <div class="circle"></div>
 
     <p><a href="#part2">Go to part 2</a></p>
-
+    <p id="demo">This is a demonstration.</p>
     <!-- <p>
       <img src="images/tiger1.jpg" alt="" height="100" />
       <img src="images/Messi.jpg" alt="" height="100" />
@@ -108,7 +110,7 @@
       dignissimos sed perferendis neque corrupti iste porro odit similique,
       harum impedit! Doloribus voluptates amet sapiente necessitatibus labore at
       ad dolore! Esse facilis facere<a href="https://www.nba.com"
-        ><img src="images/Messi.jpg" alt="" height="100"
+        ><img id="messi" src="images/Messi.jpg" alt="" height="100"
       /></a>
       officiis blanditiis, aspernatur, modi, ullam temporibus excepturi odio
       laudantium necessitatibus adipisci provident! Expedita quisquam non
@@ -274,5 +276,19 @@
       consequuntur eligendi!
     </p>
     <p><a href="#top">Go back to top</a></p>
+    <script>
+      const demoEl = document.getElementById("demo");
+      function f() {
+        console.log("...starting...");
+        demoEl.style.fontSize = "3em";
+        demoEl.style.border = "red 2px solid";
+        // demoEl.style.visibility = "hidden";
+        demoEl.style.display = "none";
+        document.getElementById("messi").src = "images/tiger1.jpg"
+      }
+      demoEl.onclick = function () {
+        f();
+      };
+    </script>
   </body>
 </html>
