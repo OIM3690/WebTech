@@ -44,18 +44,37 @@
       <div id="d1">
         <label
           >Celsius:
-          <input name="cel" size="6" type="text" id="cel"/>
+          <input name="cel" size="6" type="text" id="cel" />
         </label>
         <label
           >Fahrenheit:
-          <input name="far" size="6" type="text" id="far"/>
+          <input name="far" size="6" type="text" id="far" />
         </label>
       </div>
       <div>
-        <input name="submit" type="button" value="Convert" id="convert-btn"/>
+        <input name="submit" type="button" value="Convert" id="convert-btn" />
         <input name="reset" type="reset" value="Clear" />
       </div>
     </form>
 
+    <script>
+      function convert() {
+        /*
+        1. get the two inputs
+        2. If both inputs are empty, do something
+            - alert
+            - add message in html
+            - hight the inputs
+        3. else if (cel is not empty - we don't care about far)
+            3.1 if cel is not numeric, do something
+            3.2 else, convert cel to far
+        4. else - cel is empty and far is not empty
+            4.1 if far is not numeric, do something
+            4.2 else, conver far to cel
+        */
+
+      }
+
+    </script>
   </body>
 </html>
