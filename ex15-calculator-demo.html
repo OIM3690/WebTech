@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ex15-calculator</title>
+    <style>
+      input[type="button"] {
+        width: 50px;
+        height: 30px;
+      }
+      form {
+        background-color: silver;
+        /* margin: 30px 200px 30px 200px; */
+        margin-left: auto;
+        margin-right: auto;
+        padding: 10px;
+        width: 80%;
+      }
+      h1 {
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Simple Calculator</h1>
+    <form id="calculator" action="">
+      <p>
+        <label
+          >Result:
+          <input name="result" size="10" type="text" readonly disabled />
+        </label>
+      </p>
+      <p>
+        <label>Number 1:
+        <input name="num1" size="5" type="text" /></label>
+
+        <label>Number 2:
+        <input name="num2" size="5" type="text" /></label>
+      </p>
+      <p>
+        <input value="add" type="button" />
+        <input value="sub" type="button" />
+        <input value="mult" type="button" />
+        <input value="div" type="button" />
+      </p>
+      <p>
+        <input id="clr" value="Clear" name="reset" type="reset" />
+      </p>
+    </form>
+
+    <script>
+      function add() {
+        const cal = document.getElementById("calculator");
+        let x = cal["num1"].value;
+        let y = cal.num2.value;
+        if (isNaN(x) || isNaN(y))
+          //if x or y is not a number
+          alert("You did not enter a number!");
+        else {
+          x = parseFloat(x);
+          y = parseFloat(y);
+          cal.result.value = x + y;
+        }
+      }
+
+      function sub() {
+        const cal = document.getElementById("calculator");
+        let x = cal.num1.value;
+        let y = cal.num2.value;
+        if (isNaN(x) || isNaN(y))
+          //if x or y  is not a number
+          alert("You did not enter a number!");
+        else {
+          x = parseFloat(x);
+          y = parseFloat(y);
+          cal.result.value = x - y;
+        }
+      }
+      function mult() {
+        const cal = document.getElementById("calculator");
+        let x = cal.num1.value;
+        let y = cal.num2.value;
+        if (isNaN(x) || isNaN(y))
+          //if x or y  is not a number
+          alert("You did not enter a number!");
+        else {
+          x = parseFloat(x);
+          y = parseFloat(y);
+          console.log(x, y);
+          cal.result.value = x * y;
+        }
+      }
+      function div() {
+        const cal = document.getElementById("calculator");
+        let x = cal.num1.value;
+        let y = cal.num2.value;
+        if (isNaN(x) || isNaN(y))
+          //if x or y  is not a number
+          alert("You did not enter a number!");
+        else {
+          x = parseFloat(x);
+          y = parseFloat(y);
+          if (y === 0) alert("The second number can not be zero!");
+          else {
+            cal.result.value = x / y;
+          }
+        }
+      }
+
+      document.querySelector("input[value=add]").onclick = add;
+      document.querySelector("input[value=sub]").onclick = sub;
+      document.querySelector("input[value=mult]").onclick = mult;
+      document.querySelector("input[value=div]").onclick = div;
+    </script>
+  </body>
+</html>
