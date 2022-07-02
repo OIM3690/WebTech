@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array Demo</title>
+  </head>
+  <body>
+    <form action="" method="post" id="my-form">
+      <label><input type="radio" name="colors" value="red" />Red</label>
+      <label><input type="radio" name="colors" value="blue" />Blue</label>
+      <label><input type="radio" name="colors" value="yellow" />Yellow</label>
+      <label><input type="radio" name="colors" value="green" />Green</label>
+      <label><input type="radio" name="colors" value="pink" />Pink</label>
+      <button type="button">Change</button>
+    </form>
+    <script>
+      const colors = document.querySelectorAll("input[name='colors']"); // Array of 5 radio buttons
+      function change() {
+        // change background color based on selected radio button
+
+        let userChoice;
+        for (let i = 0; i < colors.length; i++) {
+          console.log("Iteration " + i + ":");
+          const color = colors[i].value;
+          console.log(" Color is " + color);
+          if (colors[i].checked) {
+            userChoice = color;
+            console.log(" this color is selected!");
+          }
+        }
+        console.log(userChoice);
+        document.querySelector("body").style.backgroundColor = userChoice;
+      }
+      document.querySelector("button").onclick = function () {
+        change();
+      };
+    </script>
+  </body>
+</html>
