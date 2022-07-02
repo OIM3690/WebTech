@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ex16-1</title>
+    <style>
+      form {
+        margin: 0 auto;
+        width: 80%;
+        padding: 30px;
+        font-family: Arial;
+        font-weight: bold;
+        background-color: Silver;
+      }
+
+      h1 {
+        text-align: center;
+        font-family: Arial;
+      }
+      div {
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Processing form inputs</h1>
+    <form action="" method="post">
+      <div>
+        <label
+          >Enter your name: <input name="name" type="text" size="20"
+        /></label>
+        <label>
+          Enter your age :
+          <input name="age" size="4" type="text" />
+        </label>
+      </div>
+      <div>
+        <label>
+          Select your gender:
+          <select name="gender">
+            <option value="Woman">Female</option>
+            <option value="Man">Male</option>
+          </select>
+        </label>
+      </div>
+      <div>
+        <label
+          >Your information will appear here: <br />
+          <textarea cols="40" name="result" rows="4" readonly></textarea>
+        </label>
+      </div>
+      <div>
+        <label
+          >Hide my age.
+          <input name="noAge" type="checkbox" />
+        </label>
+      </div>
+      <div>
+        <input name="submit" type="button" value="Show" id="submit-btn" />
+        <input name="reset" type="reset" value="Clear" />
+      </div>
+    </form>
+
+    <script>
+      function display() {
+        const myForm = document.querySelector("form");
+        const fullName = myForm["name"].value;
+        const age = myForm.age.value;
+        const gender = myForm.gender.value;
+
+        if (fullName.length === 0 || age === "") {
+          alert("You did not finish the form yet!");
+        } else if (isNaN(age) || parseInt(age)>130  ) {
+          alert("You did not enter a valid age.");
+        } else {
+          let message;
+          if (myForm["noAge"].checked) {
+            message = "Name: " + fullName + "\nGender: " + gender;
+          } else {
+            message =
+              "Name: " + fullName + "\nAge: " + age + "\nGender: " + gender;
+          }
+          myForm.result.value = message;
+        }
+      }
+
+      document.querySelector("#submit-btn").onclick = display;
+    </script>
+  </body>
+</html>
