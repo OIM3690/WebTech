@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array and for loop Demos</title>
+  </head>
+  <body>
+    <h1>Array and for loop Demos</h1>
+    <p>Calculate the sum of integers from 1 to 100</p>
+    <button>Calculate</button>
+    <p id="result"></p>
+    <script>
+      function calc() {
+        // display the result
+        const resultEl = document.getElementById("result");
+        // let result = 0;
+
+        // for (let i = 1; i < 101; i++) {
+        //   console.log("In iteration " + i);
+
+        //   //   if (i % 2 == 1) {
+        //   //     // if i is an odd number
+        //   //     result += i;
+        //   //     console.log(
+        //   //       " after adding i, the current result becomes " + result
+        //   //     );
+        //   //   }
+        //   result += i ;
+        //   console.log(" after adding i, the current result becomes " + result);
+
+        //   console.log("");
+        // }
+        // resultEl.innerText = result;
+
+        // Create an array of all the names
+        const names = [
+          "Jonathan",
+          "Briana",
+          "Qijia",
+          "Nicholas",
+          "Lorenzo",
+          "Dylan",
+          "Ines",
+          "Alicia",
+          "Alan",
+          "Weiye",
+        ];
+
+        let line = "";
+        for (let i = 0; i < names.length; i++) {
+          const name = names[i];
+
+          let grade = Math.floor(Math.random() * 40) + 60; // [60, 99]
+          line = name + ": " + grade + "<br>";
+          resultEl.innerHTML += line;
+        }
+      }
+      document.querySelector("button").onclick = function () {
+        calc();
+      };
+    </script>
+  </body>
+</html>
