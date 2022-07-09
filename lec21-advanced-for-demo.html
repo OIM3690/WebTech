@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 class="july">Demo</h1>
+    <h3 class="july">Subtitle</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, ea.</p>
+    <p class="july">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, ea.
+    </p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, ea.</p>
+    <button>click</button>
+  </body>
+
+  <script>
+    // after clicking the button, change all the elements with class="july" to red color
+    function f() {
+      const targets = document.querySelectorAll(".july");
+      // 1st approach, using for i
+      // for (let i = 0; i < targets.length; i ++){
+      //     targets[i].style.color = 'red';
+      // }
+
+      // 2nd approach, using for... of
+      //   for (const target of targets) {
+      //     target.style.color = "red";
+      //   }
+
+      // 3rd approach, using forEach
+      targets.forEach((target) => {
+        target.style.color = "red";
+      });
+    }
+    document.querySelector("button").onclick = function () {
+      f();
+    };
+  </script>
+</html>
