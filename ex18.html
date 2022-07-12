@@ -2,97 +2,35 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ex17</title>
-    <style>
-      form {
-        background-color: Silver;
-        font-family: Arial, Helvetica, sans-serif;
-        padding: 20px;
-        margin-right: auto;
-        margin-left: auto;
-        width: 65%;
-      }
-      h1 {
-        text-align: center;
-      }
-      div {
-        margin-bottom: 10px;
-      }
-    </style>
+    <title>ex18 - slide show</title>
   </head>
-
   <body>
-    <h1>Radio buttons and Checkboxes</h1>
-    <form action="" method="post">
-      <div>Please select a background color for the form:</div>
-      <div>
-        <label><input type="radio" name="colors" value="green" />Green </label>
-        <label
-          ><input type="radio" name="colors" value="yellow" />Yellow
-        </label>
-        <label><input type="radio" name="colors" value="lime" />Lime </label>
-        <label><input type="radio" name="colors" value="aqua" />Aqua </label>
-      </div>
-      <div>
-        Please select your favorite magazines: <br />
-        <label>
-          <input type="checkbox" name="mags" value="The New Yorker" />
-          The New Yorker </label
-        ><br />
-        <label>
-          <input type="checkbox" name="mags" value="WIRED" />
-          WIRED </label
-        ><br />
-        <label>
-          <input type="checkbox" name="mags" value="National Geographic" />
-          National Geographic </label
-        ><br />
-        <label>
-          <input type="checkbox" name="mags" value="Sports Illustrated" />
-          Sports Illustrated
-        </label>
-      </div>
-      <div>
-        <label>
-          Your magazine selections:<br />
-          <textarea name="result" cols="30" rows="4" readonly></textarea>
-        </label>
-      </div>
-      <div>
-        <input type="button" value="Select" id="submit-btn" />
-        <input type="reset" name="Reset" value="Clear" />
-      </div>
-    </form>
+    <img src="" alt="" id="tiger"/>
+
     <script>
-      const form = document.querySelector("form");
+      const slides = [
+        "images/tiger1.jpg",
+        "images/tiger2.jpg",
+        "images/tiger3.jpg",
+        "images/tiger4.jpg",
+      ];
+      let i = 0;
 
-      function process() {
-        // change background color to the seleted input
-
-        // display the seleted magazine names
-        let colorSelected;
-        const radioButtons = form["colors"];
-        // console.log(radioButtons) // make sure this is an array
-        for (let i = 0; i < radioButtons.length; i++) {
-          if (radioButtons[i].checked) {
-            colorSelected = radioButtons[i].value;
-          }
+      function slideShow() {
+        const tigerImage = document.getElementById("tiger");
+        if (i === slides.length) {
+          i = 0;
         }
-        form.style.backgroundColor = colorSelected;
-
-        let magazinesSelected = "";
-        const checkboxes = form["mags"];
-        console.log(checkboxes);
-        for (let i = 0; i < checkboxes.length; i++) {
-          if (checkboxes[i].checked) {
-            magazinesSelected = magazinesSelected + checkboxes[i].value + "\n";
-          }
-        }
-        form["result"].value = magazinesSelected;
+        tigerImage.src = slides[i];
+        i++;
+        setTimeout(slideShow, 1000);
       }
-      document.getElementById("submit-btn").onclick = function () {
-        process();
+
+      // document.addEventListener("DOMContentLoaded", slideShow);
+      document.querySelector("body").onload = function () {
+        slideShow();
       };
     </script>
   </body>
