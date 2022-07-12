@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="result"></p>
+    <button>Click</button>
+    <script>
+      let number = 5; // the variable now is a global variable
+      function count() {
+        if (number > 0) { // make sure the recursive function will stop at some point
+          // let number = 5; // because this variable is local variable, every time this function is called, this variable will be reset to 5;
+
+          // display the number
+          document.getElementById("result").innerText = number;
+
+          // decrease the number
+          number -= 1;
+
+          // after 1 second, display the new number
+          setTimeout(count, 1000); // the function count is called after 1 second
+        } else {
+          document.getElementById("result").innerText = "LIFT OFF";
+          const audio = new Audio("media/Rocket-Sound.mp3");
+          audio.play();
+        }
+      }
+      document.querySelector("button").onclick = function () {
+        count();
+      };
+    </script>
+  </body>
+</html>

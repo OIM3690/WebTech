@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        img {height: 50px;}
+    </style>
+  </head>
+  <body>
+    <h1>Roll a dice</h1>
+    <button>Roll a dice</button>
+    <p id="result"></p>
+    <div id="images">
+        <img src="images/dice.png" alt="">
+    </div>
+    <script>
+      function rollDice() {
+        // // display the dice face value, i.e. display a random integer in [1, 6]
+
+        // // 1. create a random integer in [1, 6]
+        // const randomValue = Math.floor(Math.random() * 6) + 1;
+
+        // // 2. display this random value in p#result
+        // document.getElementById("result").innerText = randomValue;
+
+        // // 3. display the image with the random face value
+        // document.querySelector("img").src = "images/die-face-" + randomValue + '.png';
+
+        // roll 100 dice and display the sum and avg
+        // 1. create a variable to store the sum, initialized to 0
+        let sum = 0;
+        const numberDice = 10;
+        // 2. use for loop to repeat the following steps 100 times
+        //     2.1. get a random integer in [1, 6]
+        //     2.2. add this random integer to sum
+        //     2.3. add one more image of dice with the face value
+        const imageDiv = document.getElementById("images");
+        imageDiv.replaceChildren();
+
+        for(let i = 1; i <= numberDice; i ++){
+            const randomValue = Math.floor(Math.random() * 6) + 1;
+            sum += randomValue;
+
+            const imgEl = document.createElement("img");
+            imgEl.src = "images/die-face-" + randomValue + '.png';
+            imageDiv.appendChild(imgEl);
+        }
+        // 3. calculate the average
+        const avg = sum / numberDice;
+
+        // 4. display the results
+        document.getElementById("result").innerText = "sum = " + sum +  ', average = ' + avg;
+      }
+      document.querySelector("button").onclick = function () {
+        rollDice();
+      };
+    </script>
+  </body>
+</html>
