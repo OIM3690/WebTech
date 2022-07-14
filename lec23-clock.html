@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clock</title>
+    <style></style>
+  </head>
+  <body>
+    <div id="clock">19:02:30</div>
+    <script>
+      // display the time every second
+      function showTime() {
+        // console.log("start...")
+        // 1. get the current time - by creating a new Date object
+        const now = new Date();
+
+        // 2. get hours, minutes, seconds
+        const hours = now.getHours();
+        let minutes = now.getMinutes();
+        if (minutes < 10) {
+          minutes = "0" + minutes;
+        }
+        let seconds = now.getSeconds();
+        if (seconds < 10) {
+          seconds = "0" + seconds;
+        }
+
+        // 3. display the time
+        document.getElementById("clock").innerText =
+          hours + ":" + minutes + ":" + seconds;
+
+        // keep updating the time, aka. after one second, call showTime
+        setTimeout(showTime, 1000);
+      }
+
+      document.querySelector("body").onload = function () {
+        showTime();
+      };
+    </script>
+  </body>
+</html>
