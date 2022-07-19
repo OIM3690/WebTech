@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>Click Me</button>
+    <ul id="result"></ul>
+    <script>
+      const list = document.querySelector("ul");
+      async function peopleInSpace() {
+        console.log("starting...");
+        const URL = "http://api.open-notify.org/astros.json";
+        const res = await fetch(URL);
+        const data = await res.json();
+        // console.log(data);
+        console.log(data.people);
+        // console.log(data.people[9].craft, data.people[9].name)
+        for (pId in data.people) {
+          console.log(pId, data.people[pId]);
+          const name = data.people[pId].name;
+          const craft = data.people[pId].craft;
+          const entry = document.createElement("li");
+          entry.innerText = name + ", " + craft;
+          list.appendChild(entry);
+        }
+      }
+
+      async function generateJoke() {
+        const config = {
+          headers: {
+            Accept: "application/json",
+          },
+        };
+
+        const res = await fetch("https://icanhazdadjoke.com", config);
+        const data = await res.json();
+        const entry = document.createElement("li");
+        entry.innerText = data.joke;
+        list.appendChild(entry);
+      }
+
+      document.querySelector("button").onclick = function () {
+        // peopleInSpace();
+        generateJoke();
+      };
+    </script>
+  </body>
+</html>
