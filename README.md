@@ -8,6 +8,6 @@ I am excited to learn Web.
 
 ## Table of Contents
 
-1. HTML
-2. CSS
+1. **HTML**
+2. *CSS*
 3. JS

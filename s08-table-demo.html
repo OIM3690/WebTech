@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regular Table Demo</title>
+    <style>
+      table {
+        border: 1px solid black;
+        border-collapse: collapse;
+        margin: 0 auto;
+      }
+      td,
+      th {
+        border: 1px solid black;
+      }
+      th {
+        background-color: yellow;
+      }
+      tbody tr:nth-child(odd) {
+        background-color: lightgray;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <caption>
+        Grades
+      </caption>
+      <thead>
+        <tr>
+          <th>Course</th>
+          <th>Grade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Web Tech</td>
+          <td>A</td>
+        </tr>
+        <tr>
+          <td>Accounting</td>
+          <td>B+</td>
+        </tr>
+        <tr>
+          <td>Web Tech</td>
+          <td>A</td>
+        </tr>
+        <tr>
+          <td>Accounting</td>
+          <td>B+</td>
+        </tr>
+        <tr>
+          <td>Web Tech</td>
+          <td>A</td>
+        </tr>
+        <tr>
+          <td>Accounting</td>
+          <td>B+</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
