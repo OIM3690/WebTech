@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Exercise 09</title>
+    <style>
+      h1 {
+        text-align: center;
+      }
+
+      form {
+        font-family: Arial, Helvetica, sans-serif;
+        color: navy;
+        background-color: lightgray;
+        padding: 10px 20px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+      }
+
+      form > div {
+        margin-bottom: 10px;
+      }
+
+      button[type="submit"] {
+        /* background: url(images/mailbox.png);
+          border: 0;
+          height: 30px;
+          width: 40px;
+          display: block;
+          background-repeat: no-repeat;
+          background-size: 100% 100%; */
+      }
+
+      input[type="text"] {
+        /* background-color: red; */
+      }
+
+      /* label{
+        display: inline-block;
+        width: 100px;
+      } */
+    </style>
+  </head>
+  <body>
+    <h1>Exercise 09 - HTML Form</h1>
+    <form action="https://oim.108122.xyz/form2" method="POST">
+      <div>
+        <label for="lastname">Last Name: </label>
+        <input
+          id="lastname"
+          maxlength="100"
+          name="lastname"
+          placeholder="Last name"
+          type="text"
+        />
+      </div>
+      <div>
+        <label for="firstname">First Name: </label>
+        <input
+          id="firstname"
+          maxlength="100"
+          name="firstname"
+          placeholder="First name"
+          type="text"
+        />
+      </div>
+      <div>
+        <label for="email">Email: </label>
+        <input
+          id="email"
+          maxlength="100"
+          name="email"
+          placeholder="Email address"
+          size="26"
+          type="email"
+        />
+      </div>
+      <div>
+        Gender:
+        <label>Male<input name="gender" type="radio" value="male" /></label>
+        <label>Female<input name="gender" type="radio" value="female" /></label>
+      </div>
+      <div>
+        <div>My favorite topics are:</div>
+        <div>
+          <input id="html" name="topics" type="checkbox" value="html" />
+          <label for="html">HTML</label>
+        </div>
+        <div>
+          <input id="css" name="topics" type="checkbox" value="css" />
+          <label for="css">CSS</label>
+        </div>
+        <div>
+          <input id="js" name="topics" type="checkbox" value="javasript" />
+          <label for="js">JavaScript</label>
+        </div>
+      </div>
+      <div>
+        <label for="grade">Which grade do you expect to receive?</label>
+        <select id="grade" name="grade">
+          <option value="A">A</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B">B</option>
+          <option value="B-">B-</option>
+          <option value="C+">C+</option>
+        </select>
+      </div>
+      <div>
+        <div>
+          <label for="comments">Leave a comment:</label>
+        </div>
+        <div>
+          <textarea
+            cols="25"
+            id="comments"
+            name="comments"
+            placeholder="Enter your comment here..."
+            rows="5"
+          ></textarea>
+        </div>
+      </div>
+      <div>
+        <button name="submit-button" type="submit">
+          <img alt="submit button" height="30" src="images/mailbox.png" />
+        </button>
+        <button name="reset-button" type="reset">
+          <img alt="reset button" height="30" src="images/reset.png" />
+        </button>
+      </div>
+    </form>
+  </body>
+</html>
