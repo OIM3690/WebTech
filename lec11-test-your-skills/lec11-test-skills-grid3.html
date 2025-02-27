@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Grid: task 3</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      body {
+        background-color: #fff;
+        color: #333;
+        font: 1.2em / 1.5 Helvetica Neue, Helvetica, Arial, sans-serif;
+        padding: 1em;
+        margin: 0;
+      }
+
+      .grid > * {
+        background-color: #4d7298;
+        border: 2px solid #77a6b6;
+        border-radius: 0.5em;
+        color: #fff;
+        padding: 0.5em;
+      }
+
+      /* -- solution 1: -- */
+      /* .grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 10px;
+        grid-template-areas:
+          "one one"
+          "two three"
+          ". four";
+      }
+
+      .one {
+        grid-area: one;
+      }
+
+      .four {
+        grid-area: four;
+      } */
+
+      /* -- solution 2: -- */
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 10px;
+      }
+
+      .one {
+        grid-column-start: 1;
+        grid-column-end: 3;
+      }
+
+      .four {
+        grid-column-start: 2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid">
+      <div class="one">One</div>
+      <div class="two">Two</div>
+      <div class="three">Three</div>
+      <div class="four">Four</div>
+    </div>
+  </body>
+</html>
