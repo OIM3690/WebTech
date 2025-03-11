@@ -11,29 +11,38 @@
     <div>
       <button onclick="c()">I dare you to click on me!</button>
     </div>
+    <!-- <script src="scripts/s13-demo.js"></script> -->
     <script>
-      function changeBackgroundColor() {
-        const bgColors = ["green", "yellow", "blue", "pink", "red", "orange"];
-        const n = bgColors.length;
-        const randIndex = Math.floor(Math.random() * n);
+      const myImg = document.querySelector("#img-mailbox");
+
+      function changeBackgroundColor(color) {
+        // const bgColors = ["green", "yellow", "blue", "pink", "red", "orange"];
+        // const n = bgColors.length;
+        // const randIndex = Math.floor(Math.random() * n);
         const body = document.querySelector("body");
-        body.style.backgroundColor = bgColors[randIndex];
+        // body.style.backgroundColor = bgColors[randIndex];
+        body.style.backgroundColor = color;
+
+        // body.style.color = "red";
+        myImg.src = "images/reset.png";
       }
 
       document.querySelector("h1").onclick = function () {
-        changeBackgroundColor();
+        changeBackgroundColor("yellow");
       };
 
       function enlargeImage() {
         // const myImg = document.getElementById("img-mailbox");
-        const myImg = document.querySelector("#img-mailbox");
+
         let w = myImg.width;
         w = w + 30;
         myImg.width = w;
       }
-      document.querySelector("img").addEventListener("mouseover", function () {
-        enlargeImage();
-      });
+    //   document.querySelector("img").addEventListener("mouseover", function () {
+    //     enlargeImage();
+    //   });
+
+      document.querySelector("img").addEventListener("mouseover", enlargeImage);
 
       function c() {
         window.alert("Haha!");
@@ -49,7 +58,7 @@
     6. window.alert() vs. window.location.herf
     7. Pros and cons of internal/external JS
     8. How to connect <button onclick="c()"> with function defination?
-    9. Is there better to randomly pick up one item from an array?
+    9. Is there better way to randomly pick up one item from an array?
     10. addEventListener vs onlick=
     -->
   </body>
