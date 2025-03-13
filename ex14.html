@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 14</title>
+  </head>
+  <body>
+    <h1>Manipulating Images using JavaScript</h1>
+    <div>
+      <img
+        src="images/tiger1.jpg"
+        alt="Tiger 1"
+        title="Tiger is walking"
+        width="400"
+      />
+    </div>
+
+    <script>
+      function enlargeImage() {
+        console.log('...Function enlargeImage starts...');
+        /* Pseudo-code
+        1. Get the current width of the image
+        2. Increase it by 10%
+        3. Assign the new width back to the image
+
+        */
+       const tigerImage = document.querySelector('img');
+       let width = tigerImage.width;
+
+       console.log(width);
+       width = width * 1.1;
+       console.log(width);
+
+       tigerImage.width = width;
+
+      }
+
+      // What element? what event?
+      // element.addEventListener( "event", funciton)
+
+      document.querySelector("img").addEventListener("mouseover", enlargeImage);
+    </script>
+  </body>
+</html>
