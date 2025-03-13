@@ -17,28 +17,42 @@
     </div>
 
     <script>
-      function enlargeImage() {
-        console.log('...Function enlargeImage starts...');
-        /* Pseudo-code
-        1. Get the current width of the image
-        2. Increase it by 10%
-        3. Assign the new width back to the image
-
+      /* Pseudo-code:
+        1. Select the first image element on the page.
+        2. Get the current width of the selected image.
+        3. Increase the width by 10%.
+        4. Update the image’s width with the new value.
+        5. Attach this function to execute when the mouse hovers over the image.
         */
-       const tigerImage = document.querySelector('img');
-       let width = tigerImage.width;
 
-       console.log(width);
-       width = width * 1.1;
-       console.log(width);
+      // Define a function that increases the image size when the mouse hovers over it
+      function enlargeImage() {
+        // Log to the console when the function is triggered
+        console.log("...Function enlargeImage starts...");
 
-       tigerImage.width = width;
+        // Select the image element on the webpage
+        const tigerImage = document.querySelector("img");
+        // Retrieve the current width of the image
+        let width = tigerImage.width;
 
+        // Log the current width to the console
+        console.log("Current width:", width);
+
+        // Increase the width by 10%
+        width = width * 1.1;
+
+        // Log the updated width to the console
+        console.log("New width:", width);
+
+        // Assign the new width back to the image
+        tigerImage.width = width;
       }
 
       // What element? what event?
-      // element.addEventListener( "event", funciton)
+      // Syntax: element.addEventListener( "event", funciton)
 
+      // Add an event listener to the image
+      // When the mouse hovers over the image, the enlargeImage function is executed
       document.querySelector("img").addEventListener("mouseover", enlargeImage);
     </script>
   </body>
