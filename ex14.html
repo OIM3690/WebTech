@@ -18,12 +18,12 @@
 
     <script>
       /* Pseudo-code:
-        1. Select the first image element on the page.
-        2. Get the current width of the selected image.
-        3. Increase the width by 10%.
-        4. Update the image’s width with the new value.
-        5. Attach this function to execute when the mouse hovers over the image.
-        */
+              1. Select the first image element on the page.
+              2. Get the current width of the selected image.
+              3. Increase the width by 10%.
+              4. Update the image’s width with the new value.
+              5. Attach this function to execute when the mouse hovers over the image.
+              */
 
       // Define a function that increases the image size when the mouse hovers over it
       function enlargeImage() {
@@ -42,9 +42,19 @@
         width = width * 1.1;
 
         // Log the updated width to the console
-        console.log("New width:", width);
+        console.log(`New width: ${width}`);
 
         // Assign the new width back to the image
+        tigerImage.width = width;
+      }
+      function reduceImage() {
+        console.log("...Function reduceImage starts...");
+
+        const tigerImage = document.querySelector("img");
+        let width = tigerImage.width;
+        console.log("Current width:", width);
+        width = width / 1.1;
+        console.log(`New width: ${width}`);
         tigerImage.width = width;
       }
 
@@ -53,7 +63,10 @@
 
       // Add an event listener to the image
       // When the mouse hovers over the image, the enlargeImage function is executed
+
       document.querySelector("img").addEventListener("mouseover", enlargeImage);
+
+      document.querySelector("img").addEventListener("mouseout", reduceImage);
     </script>
   </body>
 </html>

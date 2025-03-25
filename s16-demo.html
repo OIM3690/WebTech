@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>S16 Demo - Functions</title>
+  </head>
+  <body>
+    <button>Click</button>
+    <p id="result">Result:</p>
+
+    <script>
+      const btn = document.querySelector("button");
+      const resultP = document.querySelector("#result");
+
+      function sayHi() {
+        const msg = "Hello, world!";
+        console.log(msg);
+        // change the color of the button to yellow
+        btn.style.backgroundColor = "yellow";
+        resultP.innerText = msg;
+      }
+
+      function double(number) {
+        // calculate the double of a given number, and display the result in console without returning any value
+
+        // number is what we called parameter variable
+
+        const result = number * 2; // this variable only exists inside this function - the scope
+        // console.log("The doulbe of " + number + " is " + result);
+
+        console.log(`The double of ${number} is ${result}`);
+      }
+
+      function isEven(number) {
+        if (number % 2 === 0) {
+          console.log(`${number} is an even number.`);
+          btn.style.backgroundColor = "red";
+        } else {
+          console.log(`${number} is not an even number.`);
+          btn.style.backgroundColor = "green";
+        }
+      }
+
+      function checkInputNumber() {
+        // get input from user and check if the input number is even
+        const number = window.prompt("What is the number to check?");
+        console.log(number);
+        isEven(number);
+      }
+
+      function ask() {
+        // Ask user's age
+        const age = window.prompt("How old are you?");
+        const country = window.prompt("Which country are you from?");
+        // If you are not in US, you still can regardless of age
+        if (age >= 21 || country !== "US") {  // ||: or 
+          resultP.innerText = "Yes you can!";
+        } else {
+          resultP.innerText = "No, you cannot. Get out of here!";
+        }
+      }
+
+      btn.addEventListener("click", function () {
+        // sayHi();
+        // console.log(msg);
+        // double(20);
+        // console.log(number)
+        // console.log(result);
+        // isEven(22);
+        // checkInputNumber();
+        ask();
+      });
+    </script>
+  </body>
+</html>
