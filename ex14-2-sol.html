@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 14</title>
+ 
+  </head>
+  <body>
+    <h1>Manipulating Images using JavaScript</h1>
+    <div>
+      <img
+        src="images/tiger1.jpg"
+        alt="Tiger 1"
+        title="Tiger is walking"
+        width="400"
+        id="tiger1"
+      /><img
+        src="images/tiger2.jpg"
+        alt="Tiger 2"
+        title="Tiger is looking at me"
+        width="400"
+        id="tiger2"
+      />
+      <img
+        src="images/tiger3.jpg"
+        alt="Tiger 3"
+        title="Tiger is looking left"
+        width="400"
+        id="tiger3"
+      />
+    </div>
+    <script>
+      function enlargeImage(imageID) {
+        console.log("Function enlargeImage starts...");
+        /* Pseudocode:
+        1. get the element we want to manipulate 
+            - get the image, assign it to a variable ✅
+        2. Get the width/height of the selected element
+            - assign the value to another variable ✅
+        3. Change the value of the variable (from step 2)
+            - multiply it by 1.2 ✅
+        4. Assign the new value back to the width/height of the element.
+        */
+        const imgEl = document.getElementById(imageID);
+        // console.log(imgEl.width);
+        let w = imgEl.width;
+        w = w * 1.2;
+        // console.log(w);
+        imgEl.width = w;
+        document.querySelector("h1").innerText = imgEl.title;
+
+        console.log("...Function enlargeImage completes.");
+      }
+      document.querySelector("#tiger1").onmouseover = function () {
+        enlargeImage(this.id);
+      };
+      document.querySelector("#tiger2").onmouseover = function () {
+        enlargeImage("tiger2");
+      };
+      document.querySelector("#tiger3").onmouseover = function () {
+        enlargeImage("tiger3");
+      };
+
+      function reduceImage(imageID) {
+        const imgEl = document.getElementById(imageID);
+        let w = imgEl.width;
+        w = w / 1.2;
+        imgEl.width = w;
+        document.querySelector("h1").innerText =
+          "Manipulating Images using JavaScript";
+      }
+
+      document.getElementById("tiger1").onmouseout = function () {
+        reduceImage("tiger1");
+      };
+      document.getElementById("tiger2").onmouseout = function () {
+        reduceImage("tiger2");
+      };
+      document.getElementById("tiger3").onmouseout = function () {
+        reduceImage("tiger3");
+      };
+    </script>
+  </body>
+</html>

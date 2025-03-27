@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Session 17 Demo</title>
+  </head>
+  <body>
+    <p id="demo">This is a demo. <span>Vaughan</span></p>
+    <p id="demo2">This is another demo.</p>
+
+    <form action="">
+      <div>x = <input type="text" name="x" id="x-input" /></div>
+      <div>y = <input type="text" name="y" id="y-input" /></div>
+      <button>Click</button>
+    </form>
+
+    <script>
+      // Change the text of p#demo, and also background color of p#demo
+      function change() {
+        const demoEl = document.querySelector("#demo");
+        const demoEl2 = document.querySelector("#demo2");
+        demoEl.innerText = "Hello, <strong>world</strong>!";
+        demoEl2.innerHTML = "Hello, <strong>world</strong>!";
+        demoEl.style.backgroundColor = "yellow";
+      }
+
+      // Calculate the sum of x and y, and show the result in p#demo
+      function calculate(event) {
+        event.preventDefault(); // stops the default form submission behavior
+        // 1. get two inputs' values, 2. sum up 3. change p#demo
+        const x = document.querySelector("#x-input").value;
+        const y = document.querySelector("#y-input").value;
+
+        console.log(x)
+
+        const result = parseFloat(x) + parseFloat(y);
+
+        // Fake it till make it
+        const demoEl = document.querySelector("#demo");
+        demoEl.innerText = result;
+      }
+      const btn = document.querySelector("button");
+      btn.addEventListener(
+        "click",
+        function (event) {
+          // anonymous function
+          //   change();
+          calculate(event);
+        }
+        // () => { // arrow function
+        //   change();
+        // }
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ex15</title>
+    <style>
+      h1 {
+        text-align: center;
+      }
+      img {
+        border: 10px ridge gold;
+        display: block;
+        width: 300px;
+        margin: 30px auto;
+      }
+      div {
+        margin-top: 30px;
+        width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Changing Image Using User Input</h1>
+    <img
+      src="images/Celtics.png"
+      alt="Click here to choose the image"
+      title=""
+    />
+    <div>
+      Enter the last name of your favorite Celtics player
+      <ul>
+        <li>Jaylen Brown</li>
+        <li>Jayson Tatum</li>
+        <li>Al Horford</li>
+        <li>Payton Pritchard</li>
+      </ul>
+    </div>
+    <script>
+      function showImage() {
+        const playerName = window.prompt(
+          "Who is your favorite Celtics player?"
+        );
+        const playerEl = document.querySelector("img");
+        const h1El = document.querySelector("h1");
+
+        if (playerName === "brown" || playerName === "Brown") {
+          playerEl.src = "images/jaylen-brown.png";
+          h1El.innerText = "Jaylen Brown";
+        } else if (playerName.toLowerCase() === "tatum") {
+          playerEl.src = "images/jayson-tatum.png";
+          h1El.innerText = "Jayson Tatum";
+        } else if (playerName.toLowerCase() === "horford") {
+          playerEl.src = "images/al-horford.png";
+          h1El.innerText = "Al Horford";
+        } else if (playerName.toLowerCase() === "pritchard") {
+          playerEl.src = "images/payton-pritchard.png";
+          h1El.innerText = "Payton Pritchard";
+        } else {
+          playerEl.src = "images/home.jpg";
+          h1El.innerText = "Let's go, Celtics!";
+          window.alert("Incorrect!");
+        }
+      }
+
+      document.querySelector("img").onclick = function () {
+        showImage();
+      };
+    </script>
+  </body>
+</html>

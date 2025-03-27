@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ex16-calculator</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+        font-family: sans-serif;
+        background-color: #f0f0f0;
+      }
+
+      h1 {
+        margin-top: 30px;
+        text-align: center;
+      }
+
+      form {
+        background-color: silver;
+        padding: 20px;
+        width: 80%;
+        max-width: 400px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+      }
+
+      input[type="text"] {
+        padding: 4px 6px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        min-width: 80px;
+      }
+
+      .form-row {
+        margin: 10px 0;
+      }
+
+      .form-row.centered {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      label {
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .button-row,
+      .clear-row {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin: 10px 0;
+      }
+
+      input[type="button"],
+      input[type="reset"] {
+        width: 60px;
+        height: 35px;
+        border: none;
+        border-radius: 6px;
+        background-color: #4caf50;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+
+      input[type="button"]:hover,
+      input[type="reset"]:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Simple Calculator</h1>
+    <form id="calculator" action="">
+      <div class="form-row centered">
+        <label>
+          Result:
+          <input name="result" size="10" type="text" readonly disabled />
+        </label>
+      </div>
+
+      <div class="form-row centered">
+        <label>
+          Number 1:
+          <input name="num1" size="5" type="text" />
+        </label>
+        <label>
+          Number 2:
+          <input name="num2" size="5" type="text" />
+        </label>
+      </div>
+
+      <div class="button-row">
+        <input value="add" type="button" />
+        <input value="sub" type="button" />
+        <input value="mult" type="button" />
+        <input value="div" type="button" />
+      </div>
+
+      <div class="clear-row">
+        <input id="clr" value="Clear" name="reset" type="reset" />
+      </div>
+    </form>
+
+    <script>
+      function add() {
+        const cal = document.getElementById("calculator");
+        let x = cal["num1"].value;
+        let y = cal.num2.value;
+        if (isNaN(x) || isNaN(y)) {
+          alert("You did not enter a number!");
+        } else {
+          x = parseFloat(x);
+          y = parseFloat(y);
+          cal.result.value = x + y;
+        }
+      }
+
+      function sub() {
+        const cal = document.getElementById("calculator");
+        let x = cal.num1.value;
+        let y = cal.num2.value;
+        if (isNaN(x) || isNaN(y)) {
+          alert("You did not enter a number!");
+        } else {
+          x = parseFloat(x);
+          y = parseFloat(y);
+          cal.result.value = x - y;
+        }
+      }
+
+      function mult() {
+        const cal = document.getElementById("calculator");
+        let x = cal.num1.value;
+        let y = cal.num2.value;
+        if (isNaN(x) || isNaN(y)) {
+          alert("You did not enter a number!");
+        } else {
+          x = parseFloat(x);
+          y = parseFloat(y);
+          cal.result.value = x * y;
+        }
+      }
+
+      function div() {
+        const cal = document.getElementById("calculator");
+        let x = cal.num1.value;
+        let y = cal.num2.value;
+        if (isNaN(x) || isNaN(y)) {
+          alert("You did not enter a number!");
+        } else {
+          x = parseFloat(x);
+          y = parseFloat(y);
+          if (y === 0) {
+            alert("The second number can not be zero!");
+          } else {
+            cal.result.value = x / y;
+          }
+        }
+      }
+
+      document.querySelector("input[value=add]").onclick = add;
+      document.querySelector("input[value=sub]").onclick = sub;
+      document.querySelector("input[value=mult]").onclick = mult;
+      document.querySelector("input[value=div]").onclick = div;
+    </script>
+  </body>
+</html>
