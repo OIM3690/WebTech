@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" method="post" id="my-form">
+      <label><input type="radio" name="colors" value="red" />Red</label>
+      <label><input type="radio" name="colors" value="blue" />Blue</label>
+      <label><input type="radio" name="colors" value="yellow" />Yellow</label>
+      <label><input type="radio" name="colors" value="green" />Green</label>
+      <label><input type="radio" name="colors" value="pink" />Pink</label>
+      <label><input type="radio" name="colors" value="gray" />Gray</label>
+      <label><input type="radio" name="colors" value="orange" />Orange</label>
+
+      <button type="button" id="change-btn">Change</button>
+    </form>
+
+    <script>
+      // Select all radio inputs with the name "colors". It is actually a nodeList, but we can treat it as an array
+      const colors = document.querySelectorAll('input[name="colors"]');
+
+      function changeBackgroundColor() {
+        let selectedColor = null; // will store the value of selected color
+
+        // Loop though the array of radio buttons, to find out which one is checked
+        for (let i = 0; i < colors.length; i++) {
+          const color = colors[i];
+          if (color.checked) {
+            selectedColor = color.value;
+          }
+        }
+
+        if (selectedColor != null) {
+          document.querySelector("body").style.backgroundColor = selectedColor;
+        }
+      }
+
+      function showMagazines() {
+        console.log("Selecting magazines...");
+      }
+      document
+        .querySelector("#change-btn")
+        .addEventListener("click", function () {
+          changeBackgroundColor();
+          showMagazines();
+        });
+    </script>
+  </body>
+</html>
