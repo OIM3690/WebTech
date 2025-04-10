@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Array and <code>for</code> loop Demo</h1>
+    <button>Calcuate</button>
+    <p id="result"></p>
+
+    <script>
+      const resultP = document.querySelector("#result");
+
+      function calculate() {
+        console.log("Calculation starts...");
+        // Sum up all the odd number from 0 to 100
+        let sum = 0;
+        console.log(`Initial sum: ${sum}`);
+        for (let i = 0; i < 101; i++) {
+          //   console.log(`In iteration ${i}:`);
+          if (i % 2 == 1) {
+            sum = sum + i;
+            console.log(` after adding ${i}, sum is ${sum}`);
+          }
+        }
+        resultP.innerText = sum;
+      }
+
+      function showNames() {
+        console.log("showNames function starts...");
+
+        const names = ["Max", "Diego", "J", "Owen", "John", "Emmet", "Sol"];
+
+        let text = "";
+
+        // for (let i = 0; i < names.length; i++) {
+        //   const name = names[i];
+        //   //   console.log(name);
+        //   const grade = Math.floor(Math.random() * 10) + 90;
+        //   const line = `${name}: ${grade}<br>`; // using ul/li instead of br in p
+        //   text += line;
+        // }
+
+        // // using for ... of
+        // for (const name of names) {
+        //     // name here is a temporary variable
+        //   //   console.log(name);
+        //   const grade = Math.floor(Math.random() * 10) + 90;
+        //   const line = `${name}: ${grade}<br>`; // using ul/li instead of br in p
+        //   text += line;
+        // }
+
+        names.forEach((name) => {
+          const grade = Math.floor(Math.random() * 10) + 90;
+          const line = `${name}: ${grade}<br>`;
+          text += line;
+        });
+
+        resultP.innerHTML = text;
+      }
+
+      document.querySelector("button").addEventListener("click", function () {
+        // calculate();
+        showNames();
+      });
+    </script>
+  </body>
+</html>
