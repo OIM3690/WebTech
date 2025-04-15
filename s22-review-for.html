@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>for Demo</title>
+    <style>
+      .new-color {
+        color: red;
+        background-color: yellow;
+        margin: 10px 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="demo">for Demo</h1>
+    <h2 class="demo">Exercise</h2>
+    <p class="demo">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus,
+      magni!
+    </p>
+    <p class="demo">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus,
+      magni!
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus,
+      magni!
+    </p>
+    <p class="demo">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus,
+      magni!
+    </p>
+    <button>Change</button>
+    <script>
+      function change() {
+        // Select all the matching elements in an (Array-like) NodeList
+        // Use a for loop to change color on each item
+
+        const demoEls = document.querySelectorAll(".demo");
+        // console.log(demoEls)
+
+        // 1st approach, traditional for loop
+        // for (let i = 0; i < demoEls.length; i++) {
+        //   const demoEl = demoEls[i];
+        //   //   demoEl.style.color = "red";
+        //   //   demoEl.style.backgroundColor = "yellow";
+        //   demoEl.classList.toggle("new-color");
+        // }
+
+        // 2nd approach, for of
+        // for (const demoEl of demoEls) {
+        //   demoEl.classList.toggle("new-color");
+        // }
+
+        // 3rd approach, forEach method
+        demoEls.forEach((demoEl) => {
+          demoEl.classList.toggle("new-color");
+        });
+      }
+
+      document.querySelector("button").addEventListener("click", change);
+    </script>
+  </body>
+</html>

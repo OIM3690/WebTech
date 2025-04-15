@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Countdown</title>
+  </head>
+  <body>
+    <p id="second"></p>
+    <button>Click</button>
+
+    <script>
+      const secondEl = document.querySelector("#second");
+      const btn = document.querySelector("button");
+
+      let number = 5; // make number a global variable
+
+      function countDown() {
+        // display the countdown second, 5
+        // decrease by 1
+        // wait for one second and display again
+        if (number > 0) {
+          secondEl.innerText = number;
+          number--;
+          setTimeout(countDown, 1000);
+        } else {
+          secondEl.innerText = "Lift off!";
+        }
+      }
+      btn.addEventListener("click", countDown);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Countdown Demo</title>
+    <style>
+      #rocket {
+        display: none;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="result"></p>
+    <button>Click</button>
+    <div id="rocket">
+      <img src="images/starship.jpg" alt="Rocket launching" height="200" />
+    </div>
+
+    <script>
+      const resultEl = document.getElementById("result");
+      const rocketImg = document.getElementById("rocket");
+
+      // Global variable for countdown
+      let number = 5;
+
+      /*
+        pseudocode: countDown
+        ---------------------
+        if number > 0:
+            - display current number
+            - decrease number by 1
+            - wait 1 second, then call countDown again
+        else:
+            - display "LIFT OFF!"
+            - play rocket launch sound
+      */
+      function countDown() {
+        console.log("...starting function countDown");
+
+        if (number > 0) {
+          resultEl.textContent = number;
+          number--;
+          console.log(number);
+
+          // Schedule the next count after 1 second
+          setTimeout(countDown, 1000);
+        } else {
+          resultEl.textContent = "LIFT OFF!";
+
+          // Play sound effect at lift off
+          const audio = new Audio("audio/Rocket-Sound.mp3");
+          audio.play();
+          // Show rocket image
+          rocketImg.style.display = "block";
+        }
+      }
+
+      /*
+        pseudocode: on button click
+        ---------------------------
+        start the countdown sequence
+      */
+      document.querySelector("button").addEventListener("click", function () {
+        countDown();
+      });
+    </script>
+  </body>
+</html>
