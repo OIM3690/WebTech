@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: gray;
+      }
+      .clock {
+        font-size: 5em;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="clock">08:32:00</div>
+    </div>
+
+    <script>
+      function showTime() {
+        // Update time after every second
+        // 1. Get the current time - by creating a Date object
+        const now = new Date();
+
+        // 2. Get the hour, minute, seconds, then display it
+        const hour = now.getHours();
+        const minute = now.getMinutes();
+        const second = now.getSeconds();
+
+        const clockEl = document.querySelector(".clock");
+        clockEl.textContent = `${hour}:${minute}:${second}`;
+
+        // 3. Keep updating the time - setTimeout(showTime, 1000)
+        setTimeout(showTime, 1000);
+
+        // issue: need padding zero before single digit
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        showTime();
+      });
+    </script>
+  </body>
+</html>

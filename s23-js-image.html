@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Processing using JavaScript</title>
+  </head>
+
+  <body>
+    <canvas id="original-canvas"></canvas>
+    <canvas id="myCanvas"></canvas>
+    <div>
+      <button id="btn-1">Red Filter</button>
+      <button id="btn-2">Grayscale</button>
+      <button id="btn-3">Negative</button>
+      <button id="btn-4">Brighter</button>
+      <h2 id="rgb-info"></h2>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Create image object and set the source
+        const image = new Image();
+        image.src = "images/tiger1.jpg";
+
+        // Get canvas elements and their 2D drawing contexts
+        const originalCanvas = document.getElementById("original-canvas");
+        const myCanvas = document.getElementById("myCanvas");
+        const originalContext = originalCanvas.getContext("2d");
+        const ctx = myCanvas.getContext("2d");
+
+        const rgbInfo = document.getElementById("rgb-info");
+
+        // When the image has loaded, draw it on the canvas
+        image.onload = function () {
+          // Resize canvas to match the image size
+          originalCanvas.width = image.width;
+          originalCanvas.height = image.height;
+          myCanvas.width = image.width;
+          myCanvas.height = image.height;
+
+          // Draw image on the original canvas
+          originalContext.drawImage(image, 0, 0);
+
+          // Add event to show color info when hovering over image
+          originalCanvas.addEventListener("mousemove", pick);
+        };
+
+        // Display RGBA value of the pixel under the mouse
+        function pick(event) {
+          const x = event.layerX;
+          const y = event.layerY;
+
+          // Get pixel data at mouse location (1x1 pixel)
+          const pixel = originalContext.getImageData(x, y, 1, 1);
+          const pixelData = pixel.data;
+
+          const rgba =
+            "rgba(" +
+            pixelData[0] +
+            ", " +
+            pixelData[1] +
+            ", " +
+            pixelData[2] +
+            ", " +
+            pixelData[3] / 255 +
+            ")";
+          rgbInfo.style.background = rgba;
+          rgbInfo.textContent = rgba;
+          rgbInfo.style.color = "white";
+        }
+
+        // Duplicate event binding (can be removed if needed)
+        originalCanvas.addEventListener("mousemove", pick);
+
+        // Red channel filter (you can modify the RGB values here)
+        function redFilter() {
+          // Draw image on second canvas
+          ctx.drawImage(image, 0, 0);
+
+          // Get image pixel data
+          const imgData = ctx.getImageData(
+            0,
+            0,
+            myCanvas.width,
+            myCanvas.height
+          );
+
+          // Loop through every pixel (RGBA = 4 values per pixel)
+          for (let i = 0; i < imgData.data.length; i += 4) {
+            // Example: to emphasize red, you could zero out G and B like this:
+            // imgData.data[i] = 0; // red
+            imgData.data[i + 1] = 0; // green
+            imgData.data[i + 2] = 0; // blue
+          }
+
+          // Put modified pixel data back onto the canvas
+          ctx.putImageData(imgData, 0, 0);
+        }
+
+        function grayscale() {
+          // Draw image on second canvas
+          ctx.drawImage(image, 0, 0);
+
+          // Get image pixel data
+          const imgData = ctx.getImageData(
+            0,
+            0,
+            myCanvas.width,
+            myCanvas.height
+          );
+
+          // Average current RGB and set all channels to that value
+          for (let i = 0; i < imgData.data.length; i += 4) {
+            let avg =
+              (imgData.data[i] + imgData.data[i + 1] + imgData.data[i + 2]) / 3;
+
+            // little twist
+            if (avg > 80) {
+              avg = 255;
+            } else {
+              avg = 0;
+            }
+
+            imgData.data[i] = avg;
+            imgData.data[i + 1] = avg;
+            imgData.data[i + 2] = avg;
+          }
+
+          // Put modified pixel data back onto the canvas
+          ctx.putImageData(imgData, 0, 0);
+        }
+
+        function negative() {
+          // Draw image on second canvas
+          ctx.drawImage(image, 0, 0);
+
+          // Get image pixel data
+          const imgData = ctx.getImageData(
+            0,
+            0,
+            myCanvas.width,
+            myCanvas.height
+          );
+
+          // Negative filter - subtract each color from 255 to invert it
+          for (let i = 0; i < imgData.data.length; i += 4) {
+            imgData.data[i] = 255 - imgData.data[i]; // red
+            imgData.data[i + 1] = 255 - imgData.data[i + 1]; // green
+            imgData.data[i + 2] = 255 - imgData.data[i + 2]; // blue
+          }
+
+          // Put modified pixel data back onto the canvas
+          ctx.putImageData(imgData, 0, 0);
+        }
+
+        function brighter() {
+          // Draw image on second canvas
+          ctx.drawImage(image, 0, 0);
+
+          // Get image pixel data
+          const imgData = ctx.getImageData(
+            0,
+            0,
+            myCanvas.width,
+            myCanvas.height
+          );
+
+          // Brighter filter - add some value to each color
+          for (let i = 0; i < imgData.data.length; i += 4) {
+            const inc = 50;
+            imgData.data[i] = Math.min(255, imgData.data[i] + inc);
+            imgData.data[i + 1] = Math.min(255, imgData.data[i + 1] + inc);
+            imgData.data[i + 2] = Math.min(255, imgData.data[i + 2] + inc);
+          }
+
+          // Put modified pixel data back onto the canvas
+          ctx.putImageData(imgData, 0, 0);
+        }
+
+        // Attach button to the filter function
+        document.getElementById("btn-1").addEventListener("click", redFilter);
+        document.getElementById("btn-2").addEventListener("click", grayscale);
+        document.getElementById("btn-3").addEventListener("click", negative);
+        document.getElementById("btn-4").addEventListener("click", brighter);
+      });
+    </script>
+  </body>
+</html>
