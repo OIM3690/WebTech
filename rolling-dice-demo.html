@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rolling Dice</title>
+    <style>
+      img {
+        height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Dice Rolling Demo</h1>
+    <button>Roll</button>
+    <p id="result">?</p>
+    <div id="images">
+      <img src="images/dice.png" alt="" />
+    </div>
+
+    <script>
+      /*
+        pseudocode: rollDice
+        ---------------------
+        generate a random number from 1 to 6
+        display the number in the result text
+        update the dice image to match the number
+      */
+      function rollDice() {
+        console.log("Rolling one die...");
+        const randomValue = Math.floor(Math.random() * 6) + 1;
+
+        document.getElementById("result").innerText = `$ ${randomValue}`;
+
+        document.querySelector("img").src =
+          "images/die-face-" + randomValue + ".png";
+      }
+
+      /*
+        pseudocode: rollMultipleDice
+        ----------------------------
+        initialize sum = 0
+        repeat N times:
+            - generate random number from 1 to 6
+            - add number to sum
+            - create and show dice image for that number
+        compute average = sum / N
+        display sum and average in result
+      */
+      function rollMultipleDice() {
+        const N = 100;
+        let sum = 0;
+
+        const imagesDiv = document.querySelector("div#images");
+        imagesDiv.replaceChildren();
+
+        for (let i = 0; i < N; i++) {
+          const randomValue = Math.floor(Math.random() * 6) + 1;
+          sum += randomValue;
+
+          const imgEl = document.createElement("img");
+          imgEl.src = "images/die-face-" + randomValue + ".png";
+          imagesDiv.appendChild(imgEl);
+        }
+
+        const avg = sum / N;
+
+        document.getElementById(
+          "result"
+        ).innerText = `$ sum = ${sum}, average = ${avg.toFixed(2)}`;
+      }
+
+      /*
+        pseudocode: on button click
+        ---------------------------
+        trigger the rollMultipleDice function
+      */
+      document.querySelector("button").addEventListener("click", function () {
+        // rollDice();
+        rollMultipleDice();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LocalStorage Demo</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2em; }
+        input, button { margin: 0.5em 0; }
+        #output { margin-top: 1em; color: green; }
+    </style>
+</head>
+<body>
+    <h1>LocalStorage Demo</h1>
+    <label for="key">Key:</label>
+    <input type="text" id="key" placeholder="Enter key"><br>
+    <label for="value">Value:</label>
+    <input type="text" id="value" placeholder="Enter value"><br>
+    <button onclick="saveToLocalStorage()">Save to LocalStorage</button>
+    <button onclick="loadFromLocalStorage()">Load from LocalStorage</button>
+    <button onclick="removeFromLocalStorage()">Remove from LocalStorage</button>
+    <button onclick="clearLocalStorage()">Clear All</button>
+    <div id="output"></div>
+
+    <script>
+        function saveToLocalStorage() {
+            const key = document.getElementById('key').value;
+            const value = document.getElementById('value').value;
+            if (key && value) {
+                localStorage.setItem(key, value);
+                document.getElementById('output').textContent = `Saved "${key}": "${value}"`;
+            } else {
+                document.getElementById('output').textContent = 'Please enter both key and value.';
+            }
+        }
+
+        function loadFromLocalStorage() {
+            const key = document.getElementById('key').value;
+            if (key) {
+                const value = localStorage.getItem(key);
+                if (value !== null) {
+                    document.getElementById('output').textContent = `Loaded "${key}": "${value}"`;
+                } else {
+                    document.getElementById('output').textContent = `No value found for key "${key}".`;
+                }
+            } else {
+                document.getElementById('output').textContent = 'Please enter a key.';
+            }
+        }
+
+        function removeFromLocalStorage() {
+            const key = document.getElementById('key').value;
+            if (key) {
+                localStorage.removeItem(key);
+                document.getElementById('output').textContent = `Removed key "${key}" from LocalStorage.`;
+            } else {
+                document.getElementById('output').textContent = 'Please enter a key.';
+            }
+        }
+
+        function clearLocalStorage() {
+            localStorage.clear();
+            document.getElementById('output').textContent = 'All LocalStorage data cleared.';
+        }
+    </script>
+</body>
+</html>

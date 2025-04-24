@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ex21</title>
+  </head>
+  <body>
+    <p>
+      <img
+        id="tiger"
+        src="images/tiger1.jpg"
+        alt="Slide Show of Tigers"
+        title="Tigers"
+      />
+    </p>
+    <p id="desc"></p>
+  </body>
+
+  <script>
+    const SLIDES = [
+      "images/tiger1.jpg",
+      "images/tiger2.jpg",
+      "images/tiger3.jpg",
+      "images/tiger4.jpg",
+    ];
+    const COLORS = ["blue", "yellow", "red", "green"];
+    const DESCRIPTIONS = [
+      "Tiger Walking",
+      "Tiger looking at you",
+      "Tiger looking to left",
+      "Two tigers",
+    ];
+
+    let index = 0;
+
+    const tigerImageEl = document.getElementById("tiger");
+    const descptionEl = document.getElementById("desc");
+
+    function slideShow() {
+      if (index == SLIDES.length) {
+        index = 0;
+      }
+      tigerImageEl.src = SLIDES[index];
+      tigerImageEl.style.border = `5px solid ${COLORS[index]}`;
+      tigerImageEl.style.height = "300px";
+      descptionEl.textContent = DESCRIPTIONS[index];
+
+      index++;
+      setTimeout(slideShow, 2000);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      slideShow();
+    });
+  </script>
+</html>
