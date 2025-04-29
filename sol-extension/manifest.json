@@ -1,0 +1,14 @@
+{
+    "manifest_version": 3,
+    "name": "Quick Notes",
+    "version": "1.0",
+    "description": "Take notes quickly in a popup.",
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "icon.png"
+      }
+    },
+    "permissions": ["storage"]
+  }
+  
