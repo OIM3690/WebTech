@@ -1,0 +1,53 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+h1 {
+  text-align: center;
+}
+
+.blue {
+  color: blue;
+}
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(255, 0, 255, 1);
+}
+p.blue {
+  color: blue;
+  background-color: yellow;
+}
+ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+a {
+  color: blue;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+img {
+  /* max-width: 100%; */
+  width: 100px;
+  height: auto;
+  /* float: right; */
+  /* margin-top: -50px;
+        margin-left: -100px; */
+  /* position: fixed;
+        top:0;
+        left: 0; */
+}
+.yellow-bg {
+  background-color: yellow;
+}
+#fun {
+  background-color: gray;
+}
+.img-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
