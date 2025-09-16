@@ -1,40 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="styles/s06.css">
-</head>
-<body>
+    <!-- <link rel="stylesheet" href="styles/s06.css" /> -->
+    <style>
+      * {
+        background-color: lightgray; 
+        border: 1px solid black;
+      }
+      div {
+        color: red;
+      }
+      ul {
+        color: blue;
+      }
+      li::first-letter {
+        font-size: 200%;
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
     <h1>Welcome to My Web Page</h1>
     <p>This is a paragraph of text providing some information.</p>
-    <ul>
+    <div>
+      <ul>
         <li>First item</li>
         <li>Second item</li>
         <li>Third item</li>
-    </ul>
-    <ol>
+      </ul>
+      <ol>
         <li>Ordered item one</li>
         <li>Ordered item two</li>
         <li>Ordered item three</li>
-    </ol>
+      </ol>
+    </div>
     <a href="https://www.example.com">Visit Example</a>
-    <img src="https://via.placeholder.com/150" alt="Placeholder Image">
+    <img src="https://via.placeholder.com/150" alt="Placeholder Image" />
     <table border="1">
-        <tr>
-            <th>Header 1</th>
-            <th>Header 2</th>
-        </tr>
-        <tr>
-            <td>Data 1</td>
-            <td>Data 2</td>
-        </tr>
+      <tr>
+        <th>Header 1</th>
+        <th>Header 2</th>
+      </tr>
+      <tr>
+        <td>Data 1</td>
+        <td>Data 2</td>
+      </tr>
     </table>
     <form>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name">
-        <button type="submit">Submit</button>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" />
+      <button type="submit">Submit</button>
     </form>
-</body>
+  </body>
 </html>
