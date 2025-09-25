@@ -4,18 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+        label{
+            display: inline-block;
+            width: 100px;
+            background-color: yellow;
+        }
+    </style>
   </head>
   <body>
-    <form method="get" action="">
+    <form method="get" action="https://oim.108122.xyz/">
       <div>
         <label for="username">Username:</label>
         <input type="text" id="username" name="q" />
       </div>
-      <!-- <div>
+      <div>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" />
-      </div> -->
-      <!-- <div>
+      </div>
+      <!--
+      <div>
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" />
       </div>
@@ -35,7 +43,10 @@
         <label for="bio">Bio:</label>
         <textarea id="bio" name="bio"></textarea>
       </div> -->
-      <button type="submit">Submit</button>
+      <button type="submit">
+        <img src="images/cat.jpg" alt="Submit" width="40" />
+      </button>
+      <!-- <input type="submit" value="Submit" /> -->
     </form>
   </body>
 </html>
