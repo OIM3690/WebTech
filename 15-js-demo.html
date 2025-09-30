@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction to JavaScript - Demo</title>
+    <style>
+      .demo-section {
+        border: 2px solid #ccc;
+        margin: 20px 0;
+        padding: 15px;
+        border-radius: 8px;
+      }
+      .demo-section h3 {
+        color: #333;
+        margin-top: 0;
+      }
+      button {
+        padding: 8px 15px;
+        margin: 5px;
+        cursor: pointer;
+        border: none;
+        border-radius: 4px;
+        background: #007cba;
+        color: white;
+      }
+      button:hover {
+        background: #005a8a;
+      }
+      .hidden {
+        display: none;
+      }
+      #colorChanger {
+        cursor: pointer;
+        padding: 10px;
+        background: #f0f0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎉 JavaScript Playground - Let's Explore!</h1>
+
+    <div class="demo-section">
+      <h3>1. Background Color Magic</h3>
+      <p>Click the text below to change the background color randomly!</p>
+      <h2 id="colorChanger">Click Me ... I am Changing</h2>
+    </div>
+
+    <div class="demo-section">
+      <h3>2. Growing Mailbox</h3>
+      <p>Hover over the mailbox to make it grow!</p>
+      <img id="img-mailbox" src="images/mailbox.png" alt="mailbox" width="30" />
+    </div>
+
+    <div class="demo-section">
+      <h3>3. Current Time</h3>
+      <p>Click to see the current time:</p>
+      <button id="timeBtn">What time is it?</button>
+      <p id="timeDisplay"></p>
+    </div>
+
+    <div class="demo-section">
+      <h3>4. Hide and Seek</h3>
+      <p>Click the button to make the text disappear or appear:</p>
+      <button id="toggleBtn">Toggle Text</button>
+      <p id="hiddenText">🎭 Now you see me, now you don't!</p>
+    </div>
+
+    <div class="demo-section">
+      <h3>5. The Surprise Button</h3>
+      <button onclick="surpriseMe()">I dare you to click on me!</button>
+    </div>
+    <script>
+      function changeBackgroundColor() {
+        const bgColors = [
+          "#FFE5E5",
+          "#E5F3FF",
+          "#E5FFE5",
+          "#FFF5E5",
+          "#F0E5FF",
+          "#FFE5F0",
+        ];
+        const n = bgColors.length;
+        const randIndex = Math.floor(Math.random() * n);
+        const body = document.querySelector("body");
+        body.style.backgroundColor = bgColors[randIndex];
+      }
+
+      document
+        .querySelector("#colorChanger")
+        .addEventListener("click", function () {
+          changeBackgroundColor();
+        });
+
+      const myImg = document.querySelector("#img-mailbox");
+      function enlargeImage() {
+        let w = myImg.width;
+        w = w + 10;
+        if (w > 200) w = 30;
+        myImg.width = w;
+      }
+      myImg.addEventListener("mouseover", function () {
+        enlargeImage();
+      });
+
+      document.getElementById("timeBtn").addEventListener("click", () => {
+        const now = new Date();
+        const timeString = now.toLocaleTimeString();
+        const dateString = now.toLocaleDateString();
+        document.getElementById(
+          "timeDisplay"
+        ).textContent = `🕐 ${timeString} on ${dateString}`;
+      });
+
+      function toggleText() {
+        const text = document.getElementById("hiddenText");
+        if (text.classList.contains("hidden")) {
+          text.classList.remove("hidden");
+        } else {
+          text.classList.add("hidden");
+        }
+      }
+
+      document
+        .getElementById("toggleBtn")
+        .addEventListener("click", function () {
+          toggleText();
+        });
+
+      function surpriseMe() {
+        window.alert("Surprise! 🎉");
+
+        if (confirm("Want to see something cool? 🌟")) {
+          window.open("https://youtu.be/dQw4w9WgXcQ", "_blank");
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("🎮 Welcome to JavaScript Playground!");
+        console.log(
+          "💡 Try opening the Developer Tools and look at this console!"
+        );
+        console.log(
+          "🔍 Press F12 or right-click → 'Inspect Element' → 'Console' tab"
+        );
+      });
+
+    //  1. how is time updated?  L 106
+    //  2. Difference between onclick and addEventListener?
+    //  3. Where is bgColors coming from?
+    //  4. What is Math.floor?
+    //  5. console.log
+    //  6. Why just document.querySelector, not const ...
+    //  7. getElementById
+    //  8. .hidden
+    //  9. w = w + 10; if (w > 200) w = 30;
+    //  10. what should be in script?
+    
+    </script>
+  </body>
+</html>
