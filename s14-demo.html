@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      /* Minimal styles for the todo */
+      #todo {
+        margin: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        max-width: 400px;
+      }
+      #taskInput {
+        width: 70%;
+        padding: 6px;
+        margin-right: 6px;
+      }
+      #addBtn {
+        padding: 6px 10px;
+      }
+      #tasks li {
+        padding: 6px 4px;
+        border-bottom: 1px solid #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="title">Hello</h1>
+
+    <!-- Very simple todo UI -->
+    <section id="todo">
+      <h2>Todo</h2>
+      <div>
+        <input id="taskInput" type="text" placeholder="Add a task" />
+        <button id="addBtn">Add</button>
+      </div>
+      <ul id="tasks"></ul>
+    </section>
+
+    <script>
+      const t = document.getElementById("title");
+      t.addEventListener("click", () => {
+        t.textContent = "JavaScript Updated!";
+        t.style.color = "red";
+        document.title = "Hello world!";
+
+        let x = 10;
+        x = x + 5;
+        
+        console.log(x);
+        
+        x = x * 2;
+        console.log(x);
+      });
+      //   document.getElementById("title").textContent = "JavaScript Updated!";
+
+
+
+      // Single-feature: add task to UL
+      const input = document.getElementById("taskInput");
+      const addBtn = document.getElementById("addBtn");
+      const tasks = document.getElementById("tasks");
+
+      function addTask() {
+        const text = input.value.trim();
+        if (!text) return; // ignore empty
+        const li = document.createElement("li");
+        li.textContent = text;
+        tasks.appendChild(li);
+        input.value = "";
+        input.focus();
+      }
+
+      addBtn.addEventListener("click", addTask);
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") addTask();
+      });
+    </script>
+  </body>
+</html>

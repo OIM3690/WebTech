@@ -122,11 +122,9 @@
         }
       }
 
-      document
-        .getElementById("toggleBtn")
-        .addEventListener("click", function () {
-          toggleText();
-        });
+      document.getElementById("toggleBtn").addEventListener("click", () => {
+        toggleText();
+      });
 
       function surpriseMe() {
         window.alert("Surprise! 🎉");
@@ -135,6 +133,7 @@
           window.open("https://youtu.be/dQw4w9WgXcQ", "_blank");
         }
       }
+
       document
         .getElementById("surpriseBtn")
         .addEventListener("click", function () {
