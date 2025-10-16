@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 14</title>
+  </head>
+  <body>
+    <h1>Manipulating Images using JavaScript</h1>
+    <div>
+      <img
+        src="images/tiger1.jpg"
+        alt="Tiger 1"
+        title="Tiger is walking"
+        width="400"
+        id="tiger1"
+      /><img
+        src="images/tiger2.jpg"
+        alt="Tiger 2"
+        title="Tiger is looking at me"
+        width="400"
+        id="tiger2"
+      />
+      <img
+        src="images/tiger3.jpg"
+        alt="Tiger 3"
+        title="Tiger is looking left"
+        width="400"
+        id="tiger3"
+      />
+    </div>
+    <script>
+      function enlargeImage(imageID) {
+        console.log("Function enlargeImage starts...");
+
+        const imgEl = document.getElementById(imageID);
+
+        let w = imgEl.width;
+        w = w * 1.2;
+        imgEl.width = w;
+        document.querySelector("h1").innerText = imgEl.title;
+
+        console.log("...Function enlargeImage completes.");
+      }
+      function reduceImage(imageID) {
+        const imgEl = document.getElementById(imageID);
+        let w = imgEl.width;
+        w = w / 1.2;
+        imgEl.width = w;
+        document.querySelector("h1").innerText =
+          "Manipulating Images using JavaScript";
+      }
+
+      const images = document.querySelectorAll("img");
+
+      images.forEach((img) => {
+        img.addEventListener("mouseover", () => enlargeImage(img.id));
+        img.addEventListener("mouseout", () => reduceImage(img.id));
+      });
+    </script>
+  </body>
+</html>
