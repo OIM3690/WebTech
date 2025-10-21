@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .red-border {
+        border: 1px solid red;
+        width: 250px;
+      }
+    </style>
+  </head>
+  <body>
+    <img id="photo" src="images/cat.jpg" alt="cat" width="200" />
+
+    <script>
+      // const photo = document.querySelector('#photo');
+      const photo = document.getElementById("photo");
+
+      //   function changeToLarge() {
+      //     photo.src = "images/messi.jpg";
+      //     photo.style.border = "1px solid red";
+      //   }
+
+      photo.addEventListener("mouseover", () => {
+        photo.src = "images/messi.jpg";
+        // photo.style.border = "1px solid red";
+        photo.classList.add("red-border");
+      });
+
+      function changeToSmall() {
+        photo.src = "images/cat.jpg";
+        // photo.style.border = "None";
+        photo.classList.remove("red-border");
+      }
+
+      photo.addEventListener("mouseout", () => {
+        changeToSmall();
+        // alert('Haha')
+      });
+
+      //   photo.onmouseout = changeToSmall;
+    </script>
+  </body>
+</html>

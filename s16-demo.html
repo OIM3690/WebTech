@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="result"></p>
+    <button>Click</button>
+
+    <script>
+      const btn = document.querySelector("button");
+      const result = document.querySelector("#result");
+
+      function check() {
+        const age = window.prompt("Please enter your age:");
+        const country = window.prompt("Which country are you in:");
+
+        // Only if you are in US and you are under 21, you are not allowed. Otherwise
+        // if (age < 21 && country == "US") {
+        //   result.textContent = "No you cannot. Get out of here!";
+        // } else {
+        //   result.textContent = "Yes you can!";
+        // }
+
+        if (age >= 21 || country !== "US") {
+          result.textContent = "Yes you can!";
+        } else {
+          result.textContent = "No you cannot. Get out of here!";
+        }
+
+        // if (num % 2 == 0) {
+        //   result.textContent = "Even";
+        // } else {
+        //   result.textContent = "Odd";
+        // }
+
+        // show whether you are an adult(>18), a teenager (13-18), a kid(<13)
+
+        // if (age > 18) {
+        //   result.textContent = "Adult";
+        // } else if (age > 13) {
+        //   result.textContent = "teenager";
+        // } else {
+        //   result.textContent = "kid";
+        // }
+      }
+
+      btn.addEventListener("click", () => {
+        check();
+      });
+    </script>
+  </body>
+</html>
