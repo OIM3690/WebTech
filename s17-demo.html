@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <style>
+      form div {
+        margin-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="">
+      <div>X = <input type="text" name="x" id="x" /></div>
+      <div>Y = <input type="text" name="y" id="y" /></div>
+      <button>Click</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+      const btn = document.querySelector("button");
+      const result = document.querySelector("#result");
+
+      function check() {
+        // const n = window.prompt("Please enter how many minutes you want to convert:");
+        // const hours = Math.floor(n / 60);
+        // const minutes = n % 60;
+        // result.textContent = `${n} minutes is equal to ${hours} hour(s) and ${minutes} minute(s).`;
+
+        // const age = window.prompt("Please enter your age:");
+        // if (age >= 13 && height <= 18) {
+        //   result.textContent = "teenager";
+        // } else if (age >= 18) {
+        //   result.textContent = "adult";
+        // } else {
+        //   result.textContent = "kid";
+        // }
+
+        const name = prompt("Enter your name: ");
+        // result.textContent = `Hello ${name}!`;
+        // result.innerText = `Hello ${name}!`;
+        // result.innerHTML = `Hello <strong>${name}</strong>!`;
+        result.textContent = `Hello <strong>${name}</strong>!`;
+      }
+
+      function calculate(event) {
+        event.preventDefault();
+        // const myForm = document.querySelector("form");
+        // const a = myForm.x.value;
+        // const b = myForm.y.value;
+
+        const a = document.querySelector("#x").value;
+        const b = document.querySelector("#y").value;
+        // console.log(a, b);
+
+        if (a.length == 0 || b.length == 0) {
+          // window.alert('Please enter two numbers!');
+          result.innerHTML =
+            "<div style='color:red;'>Warning: Please enter two numbers!</div>";
+        } else if (isNaN(a) || isNaN(b)) {
+          result.innerHTML =
+            "<div style='color:red;'>Warning: Please enter two <strong>numbers</strong>!</div>";
+        } else {
+          const sum = parseFloat(a) + parseFloat(b);
+          result.innerHTML = `<div>${a} + ${b} = ${sum}</div>`;
+          result.innerHTML += `<div>${a} - ${b} = ${
+            parseFloat(a) - parseFloat(b)
+          }</div>`;
+        }
+      }
+
+      btn.addEventListener("click", (event) => {
+        // check();
+        calculate(event);
+      });
+
+      document.querySelector("form").addEventListener("submit", (event) => {
+        calculate(event);
+      });
+    </script>
+  </body>
+</html>
