@@ -47,7 +47,7 @@
       function calculate(event) {
         event.preventDefault();
         // const myForm = document.querySelector("form");
-        // const a = myForm.x.value;
+        // const a = myForm['x'].value;
         // const b = myForm.y.value;
 
         const a = document.querySelector("#x").value;
@@ -62,7 +62,8 @@
           result.innerHTML =
             "<div style='color:red;'>Warning: Please enter two <strong>numbers</strong>!</div>";
         } else {
-          const sum = parseFloat(a) + parseFloat(b);
+          const sum = a + b;
+        //   console.log(typeof a, typeof b, typeof sum);
           result.innerHTML = `<div>${a} + ${b} = ${sum}</div>`;
           result.innerHTML += `<div>${a} - ${b} = ${
             parseFloat(a) - parseFloat(b)

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" method="post" id="my-form">
+      <label><input type="radio" name="colors" value="red" />Red</label>
+      <label><input type="radio" name="colors" value="blue" />Blue</label>
+      <label><input type="radio" name="colors" value="yellow" />Yellow</label>
+      <label><input type="radio" name="colors" value="green" />Green</label>
+      <label><input type="radio" name="colors" value="purple" />Purple</label>
+      <label><input type="radio" name="colors" value="pink" />Pink</label>
+      <label><input type="radio" name="colors" value="gray" />Gray</label>
+      <textarea name="result" id="result"></textarea>
+      <button>Submit</button>
+    </form>
+  </body>
+  <script>
+    const colors = document.querySelectorAll('input[name="colors"');
+    const btn = document.querySelector("button");
+
+    function changeColor(event) {
+      event.preventDefault();
+      //   console.log("changing color ...");
+      //   let userChoice;
+      //   if (colors[0].checked) {
+      //     userChoice = colors[0].value;
+      //   } else if (colors[1].checked) {
+      //     userChoice = colors[1].value;
+      //   } else if (colors[2].checked) {
+      //     userChoice = colors[2].value;
+      //   } else {
+      //     userChoice = colors[3].value;
+      //   }
+
+      let userChoice = '#eeeeee';
+      for (let i = 0; i < colors.length; i++) {
+        if (colors[i].checked) {
+          userChoice = colors[i].value;
+        }
+      }
+      document.body.style.backgroundColor = userChoice;
+      document.querySelector('#result').value = userChoice  + '\nOther colors';
+    }
+
+    btn.addEventListener("click", (event) => {
+      changeColor(event);
+    });
+  </script>
+</html>
