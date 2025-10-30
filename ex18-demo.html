@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ex18</title>
+    <style>
+      form {
+        background-color: Silver;
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 20px;
+        margin-right: auto;
+        margin-left: auto;
+        width: 65%;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      div {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Radio buttons and Checkboxes</h1>
+    <form action="" method="post">
+      <div>Please select a background color for the form:</div>
+      <div>
+        <label><input type="radio" name="colors" value="green" />Green </label>
+        <label
+          ><input type="radio" name="colors" value="yellow" />Yellow
+        </label>
+        <label><input type="radio" name="colors" value="lime" />Lime </label>
+        <label><input type="radio" name="colors" value="aqua" />Aqua </label>
+      </div>
+      <div>
+        Please select your favorite magazines: <br />
+        <label>
+          <input type="checkbox" name="mags" value="The New Yorker" />
+          The New Yorker </label
+        ><br />
+        <label>
+          <input type="checkbox" name="mags" value="WIRED" />
+          WIRED </label
+        ><br />
+        <label>
+          <input type="checkbox" name="mags" value="National Geographic" />
+          National Geographic </label
+        ><br />
+        <label>
+          <input type="checkbox" name="mags" value="Sports Illustrated" />
+          Sports Illustrated
+        </label>
+      </div>
+      <div>
+        <label>
+          Your magazine selections:<br />
+          <textarea name="result" cols="30" rows="4" readonly></textarea>
+        </label>
+      </div>
+      <div>
+        <input type="button" value="Select" id="submit-btn" />
+        <input type="reset" name="Reset" value="Clear" />
+      </div>
+    </form>
+    <script>
+      const form = document.querySelector("form");
+
+      function changeBackgroundColor() {
+        // change background color to the seleted input
+        let colorSelected;
+        // const radioButtons = form["colors"];
+        const radioButtons = document.querySelectorAll("input[name=colors]");
+        // console.log(radioButtons) // make sure this is an Array-like type
+        for (let i = 0; i < radioButtons.length; i++) {
+          if (radioButtons[i].checked) {
+            colorSelected = radioButtons[i].value;
+            // break;
+          }
+        }
+        form.style.backgroundColor = colorSelected;
+      }
+
+      function selectMagazines() {
+        // display the seleted magazine names
+        // let magazinesSelected = "";
+        let magazineArray = []
+        const checkboxes = form["mags"];
+        console.log(checkboxes);
+        for (let i = 0; i < checkboxes.length; i++) {
+          if (checkboxes[i].checked) {
+            // magazinesSelected += checkboxes[i].value + "\n";
+            magazineArray.push(checkboxes[i].value);
+          }
+        }
+        // form["result"].value = magazinesSelected;
+        form["result"].value = magazineArray.join('\n');
+      }
+
+    //   TODO: Add more features
+
+      document
+        .getElementById("submit-btn")
+        .addEventListener("click", function () {
+          changeBackgroundColor();
+          selectMagazines();
+        });
+    </script>
+  </body>
+</html>

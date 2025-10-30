@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Array and for loop demo</h1>
+    <button>Click</button>
+    <p id="result"></p>
+
+    <script>
+      const result = document.querySelector("#result");
+      const btn = document.querySelector("button");
+
+      //   function calculate() {
+      //     // console.log('Function starting...')
+      //     // Sum up even numbers from 0 to 100, and display
+      //     let sum = 0;
+      //     console.log(`Initial sum: ${sum}`);
+      //     for (let i = 0; i <= 100; i++) {
+      //       if (i % 2 == 0) {
+      //         console.log(` now add ${i}`);
+      //         sum += i;
+      //         console.log(` after adding ${i}, sum = ${sum}`);
+      //         console.log("");
+      //       }
+      //     }
+
+      //     result.textContent = sum;
+      //   }
+
+      function statistics() {
+        const scores = [90, 80, 95, 75, 96, 92, 88, 90];
+
+        // Get the sum, average, max, min
+        let sum = 0;
+        let max = scores[0];
+        let min = scores[0];
+        for (let i = 0; i < scores.length; i++) {
+          console.log(i, scores[i]);
+          sum += scores[i];
+          if (scores[i] > max) {
+            max = scores[i];
+          }
+          if (scores[i] < min) {
+            min = scores[i];
+          }
+          console.log(
+            ` current sum = ${sum}, current max = ${max}, current min = ${min}`
+          );
+        }
+        console.log(sum);
+        const avg = sum / scores.length;
+        result.textContent = `Average = ${avg}, Max = ${max}, Min = ${min}`;
+      }
+
+      function showNames() {
+        const names = [
+          "Adam",
+          "Daniel",
+          "Justin",
+          "Chloe",
+          "Anthony",
+          "Gretel",
+          "Kaleb",
+          "Ann",
+        ];
+        let output = "";
+        // for (let i = 0; i < names.length; i++) {
+        //   const name = names[i];
+        //   const grade = Math.floor(Math.random() * 10) + 90;
+        //   const line = `${name}: ${grade}`;
+        //   output += line + "<br>";
+        // }
+
+        // for (const name of names) {
+        //   const grade = Math.floor(Math.random() * 10) + 90;
+        //   const line = `${name}: ${grade}`;
+        //   output += line + "<br>";
+        // }
+
+        names.forEach((name) => {
+          const grade = Math.floor(Math.random() * 10) + 90;
+          const line = `${name}: ${grade}`;
+          output += line + "<br>";
+        });
+
+        // const randomIndex = Math.floor(Math.random() * names.length);
+        // output = names[randomIndex];
+        result.innerHTML = output;
+      }
+
+      btn.addEventListener("click", () => {
+        // calculate();
+        // statistics();
+        showNames();
+      });
+    </script>
+  </body>
+</html>
