@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Processing using JavaScript</title>
+  </head>
+
+  <body>
+    <canvas id="original-canvas"></canvas>
+    <canvas id="myCanvas"></canvas>
+    <div>
+      <button id="btn-1">Red Filter</button>
+      <button id="btn-2">Grayscale</button>
+      <button id="btn-3">Negative</button>
+      <button id="btn-4">Saturation</button>
+      <button id="btn-5">Blur</button>
+
+      <h2 id="rgb-info"></h2>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Create image object and set the source
+        const image = new Image();
+        image.src = "images/tiger1.jpg";
+
+        // Get canvas elements and their 2D drawing contexts
+        const originalCanvas = document.getElementById("original-canvas");
+        const myCanvas = document.getElementById("myCanvas");
+        const originalContext = originalCanvas.getContext("2d");
+        const ctx = myCanvas.getContext("2d");
+
+        const rgbInfo = document.getElementById("rgb-info");
+
+        // When the image has loaded, draw it on the canvas
+        image.onload = function () {
+          // Resize canvas to match the image size
+          originalCanvas.width = image.width;
+          originalCanvas.height = image.height;
+          myCanvas.width = image.width;
+          myCanvas.height = image.height;
+
+          // Draw image on the original canvas
+          originalContext.drawImage(image, 0, 0);
+
+          // Add event to show color info when hovering over image
+          originalCanvas.addEventListener("mousemove", pick);
+        };
+
+        // Display RGBA value of the pixel under the mouse
+        function pick(event) {
+          const x = event.layerX;
+          const y = event.layerY;
+
+          // Get pixel data at mouse location (1x1 pixel)
+          const pixel = originalContext.getImageData(x, y, 1, 1);
+          const pixelData = pixel.data;
+
+          const rgba =
+            "rgba(" +
+            pixelData[0] +
+            ", " +
+            pixelData[1] +
+            ", " +
+            pixelData[2] +
+            ", " +
+            pixelData[3] +
+            ")";
+          rgbInfo.style.background = rgba;
+          rgbInfo.textContent = rgba;
+          rgbInfo.style.color = "white";
+        }
+
+        // Duplicate event binding (can be removed if needed)
+        originalCanvas.addEventListener("mousemove", pick);
+
+        // Red channel filter (you can modify the RGB values here)
+        function redFilter() {
+          // Draw image on second canvas
+          ctx.drawImage(image, 0, 0);
+
+          // Get image pixel data
+          const imgData = ctx.getImageData(
+            0,
+            0,
+            myCanvas.width,
+            myCanvas.height
+          );
+
+          // Loop through every pixel (RGBA = 4 values per pixel)
+          for (let i = 0; i < imgData.data.length; i += 4) {
+            // Example: to emphasize red, you could zero out G and B like this:
+            // imgData.data[i] = 0; // red
+            imgData.data[i + 1] = 0; // green
+            imgData.data[i + 2] = 0; // blue
+          }
+
+          // Put modified pixel data back onto the canvas
+          ctx.putImageData(imgData, 0, 0);
+        }
+
+        // Gray Scale filter (you can modify the RGB values here)
+        function grayScale() {
+          // Draw image on second canvas
+          ctx.drawImage(image, 0, 0);
+
+          // Get image pixel data
+          const imgData = ctx.getImageData(
+            0,
+            0,
+            myCanvas.width,
+            myCanvas.height
+          );
+
+          // Loop through every pixel (RGBA = 4 values per pixel)
+          for (let i = 0; i < imgData.data.length; i += 4) {
+            // Average current RGB and set all channels to that average value
+            let avg =
+              (imgData.data[i] + imgData.data[i + 1] + imgData.data[i + 2]) / 3;
+
+            if (avg > 40) {
+              avg = 255;
+            } else {
+              avg = 0;
+            }
+
+            imgData.data[i] = avg; // red
+            imgData.data[i + 1] = avg; // green
+            imgData.data[i + 2] = avg; // blue
+            // imgData.data[i + 3] = 100; // alpha
+          }
+
+          // Put modified pixel data back onto the canvas
+          ctx.putImageData(imgData, 0, 0);
+        }
+
+        // Negative filter (you can modify the RGB values here)
+        function negative() {
+          console.log("Negative filter applied");
+          // Draw image on second canvas
+          ctx.drawImage(image, 0, 0);
+
+          // Get image pixel data
+          const imgData = ctx.getImageData(
+            0,
+            0,
+            myCanvas.width,
+            myCanvas.height
+          );
+
+          // Loop through every pixel (RGBA = 4 values per pixel)
+          for (let i = 0; i < imgData.data.length; i += 4) {
+            // subtract each color form 255 to invert it
+            imgData.data[i] = 255 - imgData.data[i];
+            imgData.data[i + 1] = 255 - imgData.data[i + 1];
+            imgData.data[i + 2] = 255 - imgData.data[i + 2];
+          }
+
+          // Put modified pixel data back onto the canvas
+          ctx.putImageData(imgData, 0, 0);
+        }
+
+        // Saturation filter (you can modify the RGB values here)
+        function saturation() {
+          console.log("Saturation filter applied");
+          // Draw image on second canvas
+          ctx.drawImage(image, 0, 0);
+
+          // Get image pixel data
+          const imgData = ctx.getImageData(0, 0, myCanvas.width, myCanvas.height);
+
+          const saturationFactor = 1.5; // Increase this for more saturation (1.0 = no change)
+
+          // Loop through every pixel (RGBA = 4 values per pixel)
+          for (let i = 0; i < imgData.data.length; i += 4) {
+            const r = imgData.data[i];
+            const g = imgData.data[i + 1];
+            const b = imgData.data[i + 2];
+
+            // Calculate grayscale value (luminance)
+            const gray = 0.299 * r + 0.587 * g + 0.114 * b;
+
+            // Interpolate between gray and original color based on saturation factor
+            imgData.data[i] = gray + saturationFactor * (r - gray);
+            imgData.data[i + 1] = gray + saturationFactor * (g - gray);
+            imgData.data[i + 2] = gray + saturationFactor * (b - gray);
+
+            // Clamp values to 0-255 range
+            imgData.data[i] = Math.max(0, Math.min(255, imgData.data[i]));
+            imgData.data[i + 1] = Math.max(0, Math.min(255, imgData.data[i + 1]));
+            imgData.data[i + 2] = Math.max(0, Math.min(255, imgData.data[i + 2]));
+          }
+
+          // Put modified pixel data back onto the canvas
+          ctx.putImageData(imgData, 0, 0);
+        }
+        // Blur filter (you can modify the RGB values here)
+        function blur() {
+          console.log("Blur filter applied");
+          // Draw image on second canvas
+          ctx.drawImage(image, 0, 0);
+
+          // Get image pixel data
+          let imgData = ctx.getImageData(0, 0, myCanvas.width, myCanvas.height);
+
+          const width = myCanvas.width;
+          const height = myCanvas.height;
+
+          // Apply blur multiple times for stronger effect
+          const blurPasses = 10; // Increase this number for more blur
+
+          for (let pass = 0; pass < blurPasses; pass++) {
+            const tempData = new Uint8ClampedArray(imgData.data);
+
+            // Loop through every pixel (RGBA = 4 values per pixel)
+            // Classic blur algorithm using 3x3 kernel
+            for (let y = 1; y < height - 1; y++) {
+              for (let x = 1; x < width - 1; x++) {
+                let rSum = 0,
+                  gSum = 0,
+                  bSum = 0;
+
+                // 3x3 kernel: loop through surrounding pixels including center
+                for (let dy = -1; dy <= 1; dy++) {
+                  for (let dx = -1; dx <= 1; dx++) {
+                    const neighborX = x + dx;
+                    const neighborY = y + dy;
+                    const neighborIdx = (neighborY * width + neighborX) * 4;
+
+                    rSum += tempData[neighborIdx];
+                    gSum += tempData[neighborIdx + 1];
+                    bSum += tempData[neighborIdx + 2];
+                  }
+                }
+
+                // Average over 9 pixels (3x3 kernel)
+                const i = (y * width + x) * 4;
+                imgData.data[i] = rSum / 9;
+                imgData.data[i + 1] = gSum / 9;
+                imgData.data[i + 2] = bSum / 9;
+              }
+            }
+          }
+
+          // Put modified pixel data back onto the canvas
+          ctx.putImageData(imgData, 0, 0);
+        }
+
+        // Attach button to the filter function
+        document.getElementById("btn-1").addEventListener("click", redFilter);
+        document.getElementById("btn-2").addEventListener("click", grayScale);
+        document.getElementById("btn-3").addEventListener("click", negative);
+        document.getElementById("btn-4").addEventListener("click", saturation);
+        document.getElementById("btn-5").addEventListener("click", blur);
+      });
+    </script>
+  </body>
+</html>
