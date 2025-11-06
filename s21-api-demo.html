@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API Demo</title>
+  </head>
+  <body>
+    <button id="jokeButton">Get a Joke</button>
+    <p id="jokeDisplay"></p>
+
+    <script>
+      async function generateDadJoke() {
+        const config = {
+          headers: {
+            Accept: "application/json",
+          },
+        };
+        const URL = "https://icanhazdadjoke.com/";
+        const response = await fetch(URL, config);
+        // console.log(response);
+        const data = await response.json();
+        console.log(data);
+
+        document.getElementById("jokeDisplay").textContent = data["joke"];
+      }
+
+      async function getBitcoinPrice() {
+        const config = {
+          headers: {
+            Accept: "application/json",
+          },
+        };
+        const URL =
+          "https://data-api.coindesk.com/spot/v1/latest/tick?market=coinbase&instruments=BTC-USD,ETH-USD";
+        const response = await fetch(URL, config);
+        // console.log(response);
+        const data = await response.json();
+        // console.log(data);
+        const dataData = data["Data"];
+        // console.log(dataData);
+        const bitcoinInfo = dataData["BTC-USD"];
+        // console.log(bitcoinInfo);
+        const price = bitcoinInfo["PRICE"];
+        console.log(price);
+
+        document.getElementById("jokeDisplay").textContent = price;
+      }
+
+      document.getElementById("jokeButton").addEventListener(
+        "click",
+        // () => generateDadJoke()
+        () => getBitcoinPrice()
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OpenAI API Demo (Vanilla JS)</title>
+    <style>
+      body {
+        font-family: system-ui, Arial, sans-serif;
+        margin: 20px;
+      }
+      textarea {
+        width: 100%;
+        max-width: 800px;
+      }
+      #controls {
+        margin: 10px 0;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      button {
+        padding: 8px 14px;
+      }
+      #output {
+        white-space: pre-wrap;
+        border: 1px solid #ddd;
+        padding: 12px;
+        border-radius: 6px;
+        max-width: 800px;
+        min-height: 80px;
+      }
+      .note {
+        max-width: 820px;
+        background: #fff8e1;
+        border: 1px solid #f0d98c;
+        padding: 10px;
+        border-radius: 6px;
+      }
+      label.inline {
+        display: inline-flex;
+        gap: 6px;
+        align-items: center;
+        font-size: 0.95rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>OpenAI API Demo (Vanilla JS)</h1>
+
+    <p class="note">
+      This page includes a super simple example of calling OpenAI.<br />
+      For learning only: calling OpenAI directly from the browser exposes your
+      API key and can be blocked by CORS. The recommended way is to use the
+      included tiny proxy server and keep your key on the server.
+    </p>
+
+    <h3>Prompt</h3>
+    <!-- <textarea id="prompt" rows="5" placeholder="Ask something..."></textarea> -->
+
+    <div id="controls">
+      <button id="askBtn">Ask</button>
+      <label class="inline"
+        ><input type="checkbox" id="useDirect" /> Call OpenAI directly (not
+        safe)</label
+      >
+    </div>
+
+    <h3>Response</h3>
+    <pre id="output"></pre>
+
+    <script>
+      // Minimal demo config
+      const MODEL = "gpt-4o-mini"; // fast + inexpensive model for demos
+
+      // Option A (NOT SAFE in production): Put your API key here for quick, local experiments only.
+      // Replace the placeholder text below with your real key if you want to try direct calls.
+      // IMPORTANT: This is insecure and may fail due to CORS. Prefer the proxy option.
+
+      const DIRECT_API_KEY = process.env.OPENAI_APIKEY;
+
+      async function callOpenAIDirect(prompt) {
+        if (!DIRECT_API_KEY || DIRECT_API_KEY.includes("REPLACE_WITH")) {
+          throw new Error("Please set DIRECT_API_KEY in the HTML first.");
+        }
+        const res = await fetch("https://api.openai.com/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${DIRECT_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            model: MODEL,
+            messages: [{ role: "user", content: prompt }],
+          }),
+        });
+        if (!res.ok) {
+          const text = await res.text();
+          throw new Error(`OpenAI error ${res.status}: ${text}`);
+        }
+        const data = await res.json();
+        console.log(data);
+        return data.choices?.[0]?.message?.content?.trim() ?? "(no content)";
+      }
+
+      // Option B (Recommended): Call a tiny local proxy that keeps your API key on the server.
+      // Start the proxy with Node (see instructions below), then leave the checkbox unchecked.
+      async function callViaProxy(prompt) {
+        const res = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ prompt }),
+        });
+        if (!res.ok) {
+          const text = await res.text();
+          throw new Error(`Proxy error ${res.status}: ${text}`);
+        }
+        const data = await res.json();
+        return data.reply ?? "(no content)";
+      }
+
+      //   const promptEl = document.getElementById("prompt");
+      const outputEl = document.getElementById("output");
+      const askBtn = document.getElementById("askBtn");
+      const useDirectCb = document.getElementById("useDirect");
+
+      askBtn.addEventListener("click", async () => {
+        // const prompt = promptEl.value.trim();
+        const prompt =
+          "Today is sunny in Wellesley. Write a short poem about it.";
+        if (!prompt) {
+          outputEl.textContent = "Please enter a prompt.";
+          return;
+        }
+        outputEl.textContent = "Thinking...";
+        try {
+          const reply = useDirectCb.checked
+            ? await callOpenAIDirect(prompt)
+            : await callViaProxy(prompt);
+          outputEl.textContent = reply;
+        } catch (err) {
+          outputEl.textContent = "Error: " + err.message;
+        }
+      });
+    </script>
+
+    <!--
+			How to run the recommended proxy (Windows PowerShell):
+
+			1) Install dependencies
+				 npm install
+
+			2) Set your key for this session and start the server
+				 $env:OPENAI_API_KEY="sk-your-key-here"
+				 npm start
+
+			3) Open http://localhost:3000/s21-openai-api-demo.html in your browser
+
+			If you insist on direct browser calls, check "Call OpenAI directly" and
+			put your key in DIRECT_API_KEY above (expect CORS issues and never ship it).
+		--></body>
+</html>

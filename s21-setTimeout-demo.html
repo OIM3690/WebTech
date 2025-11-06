@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="displayInfo"></p>
+    <button>Click</button>
+
+    <script>
+      const btn = document.querySelector("button");
+      const infoEl = document.querySelector("#displayInfo");
+      let number = 5;
+
+      function countDown() {
+        if (number > 0) {
+          infoEl.innerHTML = number + "<br>";
+          number -= 1;
+          console.log(number);
+          setTimeout(countDown, 1000);
+        } else {
+          infoEl.innerHTML = "Lift off!";
+          new Audio("media/Rocket-Sound.mp3").play();
+          infoEl.insertAdjacentHTML(
+            "beforeend",
+            '<br><img src="images/rocket-launch.jpg" alt="Rocket launching" style="max-width:300px;">'
+          );
+        }
+      }
+
+      btn.addEventListener("click", () => countDown());
+    </script>
+  </body>
+</html>
