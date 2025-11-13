@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      .container {
+        height: 100vh;
+        /* background-color: lightblue; */
+        position: relative;
+        background-image: linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url('https://picsum.photos/1920/1080');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      .clock {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 5em;
+        /* background-color: gray; */
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="clock">15:42:22</div>
+    </div>
+
+    <script>
+      function updateClock() {
+        const clockDiv = document.querySelector(".clock");
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, "0");
+        const minutes = String(now.getMinutes()).padStart(2, "0");
+        const seconds = String(now.getSeconds()).padStart(2, "0");
+        clockDiv.textContent = `${hours}:${minutes}:${seconds}`;
+      }
+
+      // Update the clock every second using setTimeout
+      function startClock() {
+        updateClock();
+        setTimeout(startClock, 1000);
+      }
+
+      // Initial call to start the clock
+      startClock();
+    </script>
+  </body>
+</html>

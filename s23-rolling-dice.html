@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rolling Dice Simulation</title>
+    <style>
+      #images img {
+        width: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Roll</button>
+    <p id="result">?</p>
+    <div id="images">
+      <img src="images/dice.png" alt="" height="30" />
+    </div>
+
+    <script>
+      const btn = document.querySelector("button");
+      const result = document.querySelector("#result");
+      const image = document.querySelector("img");
+      const imagesDiv = document.querySelector("#images");
+
+      function rollDie() {
+        console.log("Rolling a die...");
+        // generate a random number between 1 and 6
+        // display
+        const number = Math.floor(Math.random() * 6) + 1;
+        result.textContent = number;
+        // if (number == 1) {
+        //     image.src = 'images/die-face-1.png';
+        // }
+        image.src = `images/die-face-${number}.png`;
+      }
+
+      function rollDice(n) {
+        // Simulate rolling 100 dice, calculate sum and average
+        /*
+        initialize sum (let sum = 0)
+
+        Repeat the following 100 times (using for loop):
+            - generate a random number (between 1 and 6), x
+            - add x to sum
+        
+        - display the result
+        */
+        // imagesDiv.innerHTML = "";
+        imagesDiv.replaceChildren();
+
+        let sum = 0;
+        for (let i = 0; i < n; i++) {
+          const number = Math.floor(Math.random() * 6) + 1;
+          sum += number;
+
+          const image = document.createElement("img");
+          image.src = `images/die-face-${number}.png`;
+          imagesDiv.appendChild(image);
+        }
+        const avg = sum / n;
+        result.textContent = `Sum = ${sum}, Average = ${avg}`;
+      }
+
+      btn.addEventListener("click", () => {
+        // rollDie();
+        rollDice(10);
+      });
+    </script>
+  </body>
+</html>
