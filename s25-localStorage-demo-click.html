@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>localStorage Demo - Click Counter</title>
+  </head>
+  <body>
+    <button id="click">Click</button>
+    <button id="reset">Reset</button>
+    <p>You have clicked <span id="result">0</span> times.</p>
+    <script>
+      function display() {
+        if (!localStorage.getItem("clickCount")) {
+          localStorage.setItem("clickCount", 0);
+        }
+        document.getElementById("result").innerText =
+          localStorage.getItem("clickCount");
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        display();
+      });
+
+      function count() {
+        if (localStorage.clickCount) {
+          //   localStorage.clickcount = Number(localStorage.clickCount) + 1;
+          const number = Number(localStorage.getItem("clickCount"));
+          localStorage.setItem("clickCount", number + 1);
+        } else {
+          localStorage.setItem("clickCount", 1);
+        }
+        display();
+      }
+
+      document.querySelector("#click").onclick = count;
+
+      function reset() {
+        localStorage.setItem("clickCount", 0);
+        display();
+      }
+      document.querySelector("#reset").onclick = function () {
+        reset();
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>localStorage Demo - Click Counter - Display Only</title>
+  </head>
+  <body>
+    <p>You have clicked <span id="result"> </span> times.</p>
+    <script>
+      function display() {
+        if (!localStorage.getItem("clickCount")) {
+          localStorage.setItem("clickCount", 0);
+        }
+        document.getElementById("result").innerText =
+          localStorage.getItem("clickCount");
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        display();
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        display();
+      });
+    </script>
+  </body>
+</html>

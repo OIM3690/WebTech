@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolocation Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        button {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 15px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f5e9;
+            border-radius: 5px;
+            display: none;
+        }
+        #error {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #ffebee;
+            border-radius: 5px;
+            color: #c62828;
+            display: none;
+        }
+        .info {
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        .label {
+            font-weight: bold;
+            color: #555;
+        }
+        #map {
+            margin-top: 20px;
+            height: 400px;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📍 Geolocation Demo</h1>
+        <button id="getLocation">Get My Location</button>
+        
+        <div id="result">
+            <h3>Your Location:</h3>
+            <div class="info">
+                <span class="label">Latitude:</span>
+                <span id="latitude"></span>
+            </div>
+            <div class="info">
+                <span class="label">Longitude:</span>
+                <span id="longitude"></span>
+            </div>
+            <div class="info">
+                <span class="label">Accuracy:</span>
+                <span id="accuracy"></span> meters
+            </div>
+            <div class="info">
+                <span class="label">Timestamp:</span>
+                <span id="timestamp"></span>
+            </div>
+        </div>
+        
+        <div id="error"></div>
+        
+        <iframe id="map" 
+                frameborder="0" 
+                scrolling="no">
+        </iframe>
+    </div>
+
+    <script>
+        const getLocationBtn = document.getElementById('getLocation');
+        const resultDiv = document.getElementById('result');
+        const errorDiv = document.getElementById('error');
+        const mapFrame = document.getElementById('map');
+
+        getLocationBtn.addEventListener('click', () => {
+            // Check if geolocation is supported
+            if (!navigator.geolocation) {
+                showError('Geolocation is not supported by your browser');
+                return;
+            }
+
+            // Disable button and show loading state
+            getLocationBtn.disabled = true;
+            getLocationBtn.textContent = 'Getting Location...';
+            resultDiv.style.display = 'none';
+            errorDiv.style.display = 'none';
+            mapFrame.style.display = 'none';
+
+            // Get current position
+            navigator.geolocation.getCurrentPosition(
+                // Success callback
+                (position) => {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    const accuracy = position.coords.accuracy;
+                    const timestamp = new Date(position.timestamp);
+
+                    // Display results
+                    document.getElementById('latitude').textContent = lat.toFixed(6);
+                    document.getElementById('longitude').textContent = lon.toFixed(6);
+                    document.getElementById('accuracy').textContent = accuracy.toFixed(2);
+                    document.getElementById('timestamp').textContent = timestamp.toLocaleString();
+
+                    // Show map with location
+                    const mapUrl = `https://www.openstreetmap.org/export/embed.html?bbox=${lon-0.01},${lat-0.01},${lon+0.01},${lat+0.01}&layer=mapnik&marker=${lat},${lon}`;
+                    mapFrame.src = mapUrl;
+                    mapFrame.style.display = 'block';
+
+                    resultDiv.style.display = 'block';
+                    getLocationBtn.disabled = false;
+                    getLocationBtn.textContent = 'Get My Location';
+                },
+                // Error callback
+                (error) => {
+                    let errorMessage = 'An unknown error occurred';
+                    
+                    switch(error.code) {
+                        case error.PERMISSION_DENIED:
+                            errorMessage = 'User denied the request for geolocation';
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            errorMessage = 'Location information is unavailable';
+                            break;
+                        case error.TIMEOUT:
+                            errorMessage = 'The request to get user location timed out';
+                            break;
+                    }
+                    
+                    showError(errorMessage);
+                    getLocationBtn.disabled = false;
+                    getLocationBtn.textContent = 'Get My Location';
+                },
+                // Options
+                {
+                    enableHighAccuracy: true,
+                    timeout: 5000,
+                    maximumAge: 0
+                }
+            );
+        });
+
+        function showError(message) {
+            errorDiv.textContent = '❌ Error: ' + message;
+            errorDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
