@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Bitcoin Price Tracker",
+  "version": "1.0",
+  "description": "Get the current Bitcoin price in real-time",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon.png"
+    }
+  },
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://api.coindesk.com/*"
+  ],
+  "icons": {
+    "16": "icon.png"
+  }
+}

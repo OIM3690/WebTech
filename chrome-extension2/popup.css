@@ -1,0 +1,86 @@
+body {
+  width: 300px;
+  min-height: 200px;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.container {
+  padding: 20px;
+  color: white;
+}
+
+h1 {
+  margin: 0 0 20px 0;
+  font-size: 24px;
+  text-align: center;
+  font-weight: 600;
+}
+
+#loading {
+  text-align: center;
+  font-size: 16px;
+  padding: 20px;
+}
+
+.price-display {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.currency {
+  display: block;
+  font-size: 14px;
+  opacity: 0.9;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.price {
+  display: block;
+  font-size: 36px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.last-updated {
+  font-size: 12px;
+  text-align: center;
+  opacity: 0.8;
+  margin-bottom: 15px;
+}
+
+#refresh-btn {
+  width: 100%;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#refresh-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+#refresh-btn:active {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.error {
+  text-align: center;
+  padding: 20px;
+  background: rgba(255, 0, 0, 0.3);
+  border-radius: 8px;
+  font-size: 14px;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitcoin Price</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1>₿ Bitcoin Price</h1>
+    <div id="loading">Loading...</div>
+    <div id="price-container" style="display: none;">
+      <div class="price-display">
+        <span class="currency">USD</span>
+        <span id="price" class="price">-</span>
+      </div>
+      <div class="last-updated">
+        Last updated: <span id="updated">-</span>
+      </div>
+      <button id="refresh-btn">Refresh</button>
+    </div>
+    <div id="error" style="display: none;" class="error">
+      Failed to fetch Bitcoin price. Please try again.
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
